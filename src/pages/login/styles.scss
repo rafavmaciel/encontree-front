@@ -1,0 +1,30 @@
+@import '../../stylesheets/colors';
+
+.container {
+    background-color: $color-azul-nav;
+    border-radius: 5px;
+    padding: 10px;
+    h2, .text {
+        color: $color-branco;
+    }
+    .icon {
+        display: flex;
+        justify-content: center;
+    }
+}
+
+.botao {
+    border: none;
+    border-radius: 10px;
+    padding: 8px;
+    width: 100%;
+}
+
+.white {
+    background-color: $color-branco;
+    color: #000000;
+}
+.green {
+    background-color: $color-verde-accept;
+    color: $color-branco;
+}
