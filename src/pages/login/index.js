@@ -6,8 +6,8 @@ function Login() {
     return (
     <>
         <Header/>
-        <div className='container'>
-            <h1 className='d-flex justify-content-center'>Entrar</h1>
+        <div className='container col-lg-6 col-sm-12'>
+            <h2 className='d-flex justify-content-center'>Entrar</h2>
             <div className='icon'>
                 <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" fill="white" className="bi bi-person-circle" viewBox="0 0 16 16">
                         <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
@@ -16,7 +16,7 @@ function Login() {
 
             </div>
 
-            <form className='container w-25'>
+            <form className='container col-sm-12 col-lg-6'>
                 <div className="mb-3">
                     <label htmlFor="exampleInputEmail1" className="form-label text">Email</label>
                     <input type="email" className="form-control" />
@@ -27,13 +27,17 @@ function Login() {
                 </div>
                 <button type="submit" className="botao green">Entrar</button>
                 
-                <p className='text d-flex justify-content-center'>Ou</p>
+                <p className='text d-flex justify-content-center mt-3'>Ou</p>
                 <button type="submit" className="botao white">Entrar com Google</button>
             </form>
 
-            <div className='container d-flex justify-content-center'>
-                <p className='text'>Não possui conta?</p>
-                <a href='?#' className='text'>Cadastre-se!</a>
+            <div className='container'>
+                <div className='row justify-content-md-center'>
+                    <p className='text col-md-auto'>Não possui conta?</p>
+                </div>
+                <div className='row justify-content-md-center'>
+                    <a href='?#' className='text col-md-auto'>Cadastre-se!</a>
+                </div>
             </div>
 
         </div>

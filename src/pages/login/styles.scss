@@ -4,7 +4,7 @@
     background-color: $color-azul-nav;
     border-radius: 5px;
     padding: 10px;
-    h1, .text {
+    h2, .text {
         color: $color-branco;
     }
     .icon {
@@ -18,14 +18,13 @@
     border-radius: 10px;
     padding: 8px;
     width: 100%;
-
-    .white {
-        background-color: $color-branco;
-        color: #000000;
-    }
-    .green {
-        background-color: $color-verde-accept;
-        color: $color-branco;
-    }
 }
 
+.white {
+    background-color: $color-branco;
+    color: #000000;
+}
+.green {
+    background-color: $color-verde-accept;
+    color: $color-branco;
+}
