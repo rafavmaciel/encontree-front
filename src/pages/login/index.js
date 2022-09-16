@@ -6,7 +6,7 @@ function Login() {
     return (
     <>
         <Header/>
-        <div className='container col-lg-6 col-sm-12'>
+        <div className='container blue col-lg-6 col-sm-12'>
             <h2 className='d-flex justify-content-center'>Entrar</h2>
             <div className='icon'>
                 <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" fill="white" className="bi bi-person-circle" viewBox="0 0 16 16">
