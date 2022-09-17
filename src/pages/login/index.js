@@ -27,7 +27,9 @@ function Login() {
                 </div>
                 <div className='alinhamento'>
                     <button type="submit" className="botao green">Entrar</button>
+                </div>                 
                 <p className='text d-flex justify-content-center mt-3'>Ou</p>
+                <div className='alinhamento'>
                     <button type="submit" className="botao white ">Entrar com Google</button>
                 </div>
             </form>
