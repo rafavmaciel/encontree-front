@@ -22,7 +22,7 @@ function LandingPage() {
                     </div>
                 </div>
                 <div className="col-12 col-lg-5">
-                    <img src={img_lp} className="card-img img" />
+                    <img src={img_lp} className="card-img img" alt='Imagem principal'/>
                 </div>                
             </div>
         </div>

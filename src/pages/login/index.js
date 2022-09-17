@@ -25,17 +25,18 @@ function Login() {
                     <label htmlFor="exampleInputPassword1" className="form-label text">Senha</label>
                     <input type="password" className="form-control" />
                 </div>
-                <button type="submit" className="botao green">Entrar</button>
-                
+                <div className='alinhamento'>
+                    <button type="submit" className="botao green">Entrar</button>
                 <p className='text d-flex justify-content-center mt-3'>Ou</p>
-                <button type="submit" className="botao white">Entrar com Google</button>
+                    <button type="submit" className="botao white ">Entrar com Google</button>
+                </div>
             </form>
 
             <div className='container'>
-                <div className='row justify-content-md-center'>
+                <div className='alinhamento'>
                     <p className='text col-md-auto'>Não possui conta?</p>
                 </div>
-                <div className='row justify-content-md-center'>
+                <div className='alinhamento'>
                     <a href='?#' className='text col-md-auto'>Cadastre-se!</a>
                 </div>
             </div>
