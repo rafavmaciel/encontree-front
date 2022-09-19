@@ -1,5 +1,5 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Header from '../../components/header/index';
+import Header from '../../components/header/Header';
 import './styles.scss'
 
 function Login() {
