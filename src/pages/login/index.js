@@ -1,47 +1,88 @@
-import 'bootstrap/dist/css/bootstrap.min.css';
-import Header from '../../components/header/Header';
-import './styles.scss'
+import "bootstrap/dist/css/bootstrap.min.css";
+import "./styles.scss";
+import { signInWithGoogle } from "../../services/googleAutentication";
+import axios from "axios";
 
 function Login() {
+    async function handleGoogleLogin() {
+        try {
+            const user = await signInWithGoogle();
+            console.log(user);
+            axios.get("http://localhost:3003/user/?email=" + user.email).then((response) => {
+                if (response.data == null) {
+                    // navegar para a pagina de cadastro
+                } else {
+                    // navegar para a minha conta
+                }
+            });
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
     return (
-    <>
-        <Header/>
-        <div className='container blue col-lg-6 col-sm-12'>
-            <h2 className='d-flex justify-content-center'>Entrar</h2>
-            <div className='icon'>
-                <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" fill="white" className="bi bi-person-circle" viewBox="0 0 16 16">
-                        <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
-                        <path fillRule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
-                </svg>
-
+        <>
+            <div className="flex flex flex-col items-center justify-center min-h-screen py-2 ">
+                <main className="flex flex-col items-center justify-center w-full flex-1 px-20 text-center">
+                    <div className="bg-white rounded-2xl shadow-2xl flex w-full max-w-4xl ">
+                        <div className="w-3/5 p-5">
+                            <div className="text-left font-bold">
+                                <span className="text-blue-500">Encontree </span>
+                            </div>
+                            <div className="py-10">
+                                <h2 className="text-3xl font-bold text-blue-500 mb-2">Logar com uma conta</h2>
+                                <div className="border-2 w-10 border-blue-500 inline-block mb-2"></div>
+                                <div className="flex justify-center my-2">
+                                    <a
+                                        onClick={(e) => handleGoogleLogin()}
+                                        className="border-2 border-gray-100 rounded-full p-3 mx-1 hover:bg-blue-500 hover:border-gray-100 "
+                                    >
+                                        <i className="fab fa-google text-2xl"></i>
+                                    </a>
+                                </div>
+                                {/* Social login section */}
+                                <p className="text-gray-400 my-3">ou entre com sua conta de email </p>
+                                <div className="flex flex-col items-center">
+                                    <div className="bg-gray-100 w-64 p-2 flex items-center mb-3">
+                                        <i className="fas fa-envelope text-xl text-gray-400 mr-2"></i>
+                                        <input
+                                            type="email"
+                                            name="email"
+                                            placeholder="Email"
+                                            className="bg-gray-100 outline-none text-sm
+flex-1"
+                                        />
+                                    </div>
+                                    <div className="bg-gray-100 w-64 p-2 flex items-center mb-3">
+                                        <i className="fas fa-lock text-xl text-gray-400 mr-2"></i>
+                                        <input
+                                            type="password"
+                                            name="password"
+                                            placeholder="Senha"
+                                            className="bg-gray-100 outline-none
+text-sm flex-1"
+                                        />
+                                    </div>
+                                    <div className="flex justify-between w-64 mb-5">
+                                        <label className="flex items-center text-xs">
+                                            <input type="checkbox" name="remember" className="mr-1" />
+                                        </label>
+                                        <a href="#" className="text-xs">
+                                            Esqueceu a senha?
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="w-2/5 bg-blue-500 text-white rounded-tr-2xl rounded-br-2xl py-36 px-12 ">
+                            <h2 className="text-3xl font-bold mb-2">Seja bem vindo!</h2>
+                            <div className="border-2 w-10 border-white inline-block mb-2"></div>
+                            <p className="mb-10">Entre com uma conta do google para continuar. </p>
+                        </div>
+                    </div>
+                </main>
             </div>
-
-            <form className='container col-sm-12 col-lg-6'>
-                <div className="mb-3">
-                    <label htmlFor="exampleInputEmail1" className="form-label text">Email</label>
-                    <input type="email" className="form-control" />
-                </div>
-                <div className="mb-3">
-                    <label htmlFor="exampleInputPassword1" className="form-label text">Senha</label>
-                    <input type="password" className="form-control" />
-                </div>
-                <button type="submit" className="botao green">Entrar</button>
-                
-                <p className='text d-flex justify-content-center mt-3'>Ou</p>
-                <button type="submit" className="botao white">Entrar com Google</button>
-            </form>
-
-            <div className='container'>
-                <div className='row justify-content-md-center'>
-                    <p className='text col-md-auto'>Não possui conta?</p>
-                </div>
-                <div className='row justify-content-md-center'>
-                    <a href='?#' className='text col-md-auto'>Cadastre-se!</a>
-                </div>
-            </div>
-
-        </div>
-    </>
+        </>
     );
 }
 

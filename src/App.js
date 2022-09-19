@@ -7,6 +7,7 @@ import Login from './pages/login/index';
 import Menu from './pages/menu/index';
 import Home from './pages/home/Home';
 import Header from './components/header/Header';
+import AnuncioDetais from './pages/anuncioDetais/AnuncioDetais';
 
 function App() {
   return (
@@ -18,6 +19,8 @@ function App() {
         <Route path="/login" element={<Login/>}/>
         <Route path="/menu" element={<Menu/>}/>
         <Route path="/home" element={<Home/>}/>
+        <Route path="/anuncioDetais:id" element={<AnuncioDetais/>}/>
+        
       </Routes>
     </BrowserRouter>
     </>
