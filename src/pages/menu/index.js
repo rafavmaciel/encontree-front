@@ -5,7 +5,6 @@ import './styles.scss'
 function Menu() {
     return (
     <>
-        <Header/>
 
         <div className="container mt-5" >
             <div className='col-sm-12 col-lg-6 offset-lg-3'>
