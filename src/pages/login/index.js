@@ -18,7 +18,7 @@ function Login() {
                 if (response.data == null) {
                     navigate("/cadastroUsuario");
                 } else {
-                    // navegar para a minha conta
+                    navigate("/home");
                 }
             });
         } catch (error) {

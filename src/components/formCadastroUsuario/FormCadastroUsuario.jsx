@@ -1,7 +1,34 @@
+import axios from "axios";
+import React, { useState, useContext } from "react";
+import UserContext from "../../redux/UserReducer";
+
 export default function FormCadastroUsuario() {
+    const { state, dispatch } = useContext(UserContext);
+
     function handleSubmit(event) {
         event.preventDefault();
-        let usuario = {};
+        let usuario = {
+            nome: event.target.nomeUser.value,
+            email: event.target.email.value,
+            cpf: event.target.cpfUser.value,
+            telefone: event.target.telUser.value,
+            idade: event.target.idadeUser.value,
+            sexo: event.target.sexoUser.value,
+        };
+        console.log(usuario);
+        axios
+            .post("http://localhost:3003/user", usuario, {
+                headers: {
+                    "Content-Type": "application/json",
+                },
+            })
+            .then((response) => {
+                console.log(response.data);
+                alert(response);
+            })
+            .catch((error) => {
+                console.log(error);
+            });
     }
 
     return (
@@ -16,7 +43,6 @@ export default function FormCadastroUsuario() {
                         id="nomeUser"
                         className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                         placeholder="Joly"
-                        //value={state.user.user}
                         required
                     />
                 </div>
@@ -29,6 +55,7 @@ export default function FormCadastroUsuario() {
                         className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                         placeholder="exemple@gmail.com"
                         disabled
+                        value={state.user.email}
                         required
                     />
                 </div>
@@ -69,11 +96,11 @@ export default function FormCadastroUsuario() {
                     />
                 </div>
                 <div>
-                    <label for="cidadeUser" className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                    <label for="sexoUser" className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
                         Sexo
                     </label>
                     <select
-                        id="cidadeUser"
+                        id="sexoUser"
                         className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                         placeholder=""
                         required
