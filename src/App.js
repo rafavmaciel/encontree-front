@@ -5,6 +5,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import LandingPage from './pages/landingPage/index';
 import Login from './pages/login/index';
 import Menu from './pages/menu/index';
+import PerfilUsuario from './pages/perfil_usuario/index';
 import Home from './pages/home/Home';
 import Header from './components/header/Header';
 
@@ -17,6 +18,7 @@ function App() {
         <Route path="/" element={<LandingPage/>}/>
         <Route path="/login" element={<Login/>}/>
         <Route path="/menu" element={<Menu/>}/>
+        <Route path="/perfil_usuario" element={<PerfilUsuario/>}/>
         <Route path="/home" element={<Home/>}/>
       </Routes>
     </BrowserRouter>

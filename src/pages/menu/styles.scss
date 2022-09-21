@@ -1,7 +1,8 @@
 @import '../../stylesheets/colors';
 
-.blue{
-    background-color: $color-azul-nav;
+.branco{
+    
+    background-color: $color-branco;
     border-radius: 5px;
     padding: 10px;
     h2, h5, p, .text {
@@ -11,6 +12,14 @@
         display: flex;
         justify-content: center;
     }
+}
+
+.alinhamento{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+   
 }
 
 .botao {
