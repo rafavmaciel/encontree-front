@@ -1,32 +1,34 @@
-import './App.scss';
+import "./App.scss";
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-import LandingPage from './pages/landingPage/index';
-import Login from './pages/login/index';
-import Menu from './pages/menu/index';
-import PerfilUsuario from './pages/perfil_usuario/index';
-import Home from './pages/home/Home';
-import Header from './components/header/Header';
-import AnuncioDetais from './pages/anuncioDetais/AnuncioDetais';
+import LandingPage from "./pages/landingPage/index";
+import Login from "./pages/login/index";
+import Menu from "./pages/menu/index";
+import Home from "./pages/home/Home";
+import Header from "./components/header/Header";
+import AnuncioDetais from "./pages/anuncioDetais/AnuncioDetais";
+import CadastroUsuario from "./pages/cadastroUsuario/CadastroUsuario";
+import { UserProvider } from "./redux/UserReducer";
 
 function App() {
-  return (
-    <>
-    <BrowserRouter>
-    <Header/>
-      <Routes>
-        <Route path="/" element={<LandingPage/>}/>
-        <Route path="/login" element={<Login/>}/>
-        <Route path="/menu" element={<Menu/>}/>
-        <Route path="/perfil_usuario" element={<PerfilUsuario/>}/>
-        <Route path="/home" element={<Home/>}/>
-        <Route path="/anuncioDetais:id" element={<AnuncioDetais/>}/>
-        
-      </Routes>
-    </BrowserRouter>
-    </>
-  );
+    return (
+        <>
+            <UserProvider>
+                <BrowserRouter>
+                    <Header />
+                    <Routes>
+                        <Route path="/" element={<LandingPage />} />
+                        <Route path="/login" element={<Login />} />
+                        <Route path="/menu" element={<Menu />} />
+                        <Route path="/home" element={<Home />} />
+                        <Route path="/anuncioDetais:id" element={<AnuncioDetais />} />
+                        <Route path="/cadastroUsuario" element={<CadastroUsuario />} />
+                    </Routes>
+                </BrowserRouter>
+            </UserProvider>
+        </>
+    );
 }
 
 export default App;

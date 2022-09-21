@@ -1,18 +1,24 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./styles.scss";
+import { useEffect, useContext} from "react";
 import { signInWithGoogle } from "../../services/googleAutentication";
 import axios from "axios";
+import UserContext from "../../redux/UserReducer";
+import { useNavigate } from "react-router-dom";
 
 function Login() {
+    const navigate = useNavigate();
+    const {state, dispatch} = useContext(UserContext);
     async function handleGoogleLogin() {
         try {
             const user = await signInWithGoogle();
             console.log(user);
+            dispatch({type: "SET_USER", payload: user});
             axios.get("http://localhost:3003/user/?email=" + user.email).then((response) => {
                 if (response.data == null) {
-                    // navegar para a pagina de cadastro
+                    navigate("/cadastroUsuario");
                 } else {
-                    // navegar para a minha conta
+                    navigate("/home");
                 }
             });
         } catch (error) {
