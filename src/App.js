@@ -8,6 +8,7 @@ import Menu from './pages/menu/index';
 import PerfilUsuario from './pages/perfil_usuario/index';
 import Home from './pages/home/Home';
 import Header from './components/header/Header';
+import AnuncioDetais from './pages/anuncioDetais/AnuncioDetais';
 
 function App() {
   return (
@@ -20,6 +21,8 @@ function App() {
         <Route path="/menu" element={<Menu/>}/>
         <Route path="/perfil_usuario" element={<PerfilUsuario/>}/>
         <Route path="/home" element={<Home/>}/>
+        <Route path="/anuncioDetais:id" element={<AnuncioDetais/>}/>
+        
       </Routes>
     </BrowserRouter>
     </>

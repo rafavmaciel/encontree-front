@@ -6,8 +6,7 @@ import img_lp from '../../img/landingpageCropped.jpg'
 function LandingPage() {
     return (
     <>
-        <Header/>
-
+        
         <div className="card container blue" >
             <div className="row">
                 <div className="col-12 col-lg-7">

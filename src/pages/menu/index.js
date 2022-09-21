@@ -5,7 +5,6 @@ import './styles.scss'
 function Menu() {
     return (
     <>
-        <Header/>
 
         <div className='container branco col-lg-6 col-sm-12'>
             <div className='container'>
