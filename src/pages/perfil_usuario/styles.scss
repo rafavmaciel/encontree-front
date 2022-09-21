@@ -1,0 +1,76 @@
+@import '../../stylesheets/colors';
+
+.blue {
+    background-color: $color-azul-nav;
+    border-radius: 5px;
+    padding: 10px;
+    h2, .text {
+        color: $color-branco;
+    }
+    .icon {
+        display: flex;
+        justify-content: center;
+        
+    }
+    
+}
+
+.botao_voltar {
+    border: none;
+    border-radius: 10px;
+    padding: 6px;
+    width: 30%;
+}
+
+.perfil{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1em;
+    color: #ffffff;
+}
+
+.perfil svg{
+    margin: .3em;
+}
+
+.perfil h6{
+    padding-top: 2em;
+}
+
+
+.tags{
+    background-color: $color-cinza;
+}
+
+.espaco_bottom{
+    padding-bottom: 2em;
+}
+
+.botao {
+    border: none;
+    border-radius: 10px;
+    padding: 8px;
+    width: 50%;
+}
+
+
+.white {
+    background-color: $color-branco;
+    color: #000000;
+}
+
+.green {
+    background-color: $color-verde-accept;
+    color: $color-branco;
+}
+
+.img_circle{
+    display: inline-block;
+    border-radius: 50%;
+}
+
+.img_circle img{
+    border-radius: 50%;
+}
