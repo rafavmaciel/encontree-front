@@ -10,6 +10,7 @@ import Header from "./components/header/Header";
 import AnuncioDetais from "./pages/anuncioDetais/AnuncioDetais";
 import CadastroUsuario from "./pages/cadastroUsuario/CadastroUsuario";
 import { UserProvider } from "./redux/UserReducer";
+import MinhaConta from "./pages/minhaConta/MinhaConta";
 
 function App() {
     return (
@@ -24,6 +25,7 @@ function App() {
                         <Route path="/home" element={<Home />} />
                         <Route path="/anuncioDetais:id" element={<AnuncioDetais />} />
                         <Route path="/cadastroUsuario" element={<CadastroUsuario />} />
+                        <Route path="/minha-conta" element={<MinhaConta />} />
                     </Routes>
                 </BrowserRouter>
             </UserProvider>
