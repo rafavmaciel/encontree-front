@@ -1,12 +1,10 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Header from '../../components/header/index';
 import './styles.scss'
 
 function FiltroImoveis() {
 
     return (
     <>
-        <Header/>
         <div className='container blue col-lg-6 col-sm-12'>
    
             <h4 className='d-flex justify-content-center mb-4'>Procurar Imóvel - Filtros</h4>

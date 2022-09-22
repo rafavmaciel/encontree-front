@@ -1,13 +1,11 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Header from '../../components/header/index';
 import './styles.scss'
 import img_lp from '../../img/landingpageCropped.jpg'
 
 function LandingPage() {
     return (
     <>
-        <Header/>
-
+        
         <div className="card container blue" >
             <div className="row">
                 <div className="col-12 col-lg-7">

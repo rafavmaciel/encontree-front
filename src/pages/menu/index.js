@@ -1,11 +1,9 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Header from '../../components/header/index';
 import './styles.scss'
 
 function Menu() {
     return (
     <>
-        <Header/>
 
         <div className='container branco col-lg-6 col-sm-12'>
             <div className='container'>
