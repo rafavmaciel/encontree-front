@@ -9,9 +9,9 @@ export default function MinhaConta() {
     const { state, dispatch } = useContext(UserContext);
     const [user, setUser] = useState();
     const [imoveis, setImoveis] = useState();
+    let id_usuario;
 
     const getUser = async () => {
-        let id_usuario;
         try {
             await axios.get("http://localhost:3003/user/?email=" + state.user.email).then((response) => {
                 id_usuario = response.data[0].id_usuario;
@@ -97,7 +97,7 @@ export default function MinhaConta() {
                             ))}
                         </div>
                     <button
-                        //onClick={handleClickModal}
+                        onClick={() => navigate("/cadastro-imovel/" + user.id_usuario)}
                         className="bg-black hover:bg-stone-300 text-white font-bold py-2 px-4 rounded content-end"
                     >
                         Adicionar Imóvel

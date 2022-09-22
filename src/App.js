@@ -11,6 +11,7 @@ import AnuncioDetais from "./pages/anuncioDetais/AnuncioDetais";
 import CadastroUsuario from "./pages/cadastroUsuario/CadastroUsuario";
 import { UserProvider } from "./redux/UserReducer";
 import MinhaConta from "./pages/minhaConta/MinhaConta";
+import CadastroImovel from "./pages/cadastroImovel/CadastroImovel";
 
 function App() {
     return (
@@ -26,6 +27,7 @@ function App() {
                         <Route path="/anuncioDetais:id" element={<AnuncioDetais />} />
                         <Route path="/cadastroUsuario" element={<CadastroUsuario />} />
                         <Route path="/minha-conta" element={<MinhaConta />} />
+                        <Route path="/cadastro-imovel/:id_usuario" element={<CadastroImovel />} />
                     </Routes>
                 </BrowserRouter>
             </UserProvider>
