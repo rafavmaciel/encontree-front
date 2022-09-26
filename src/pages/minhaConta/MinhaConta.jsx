@@ -50,7 +50,6 @@ export default function MinhaConta() {
             await axios.delete("http://localhost:3003/imovel/?id_imovel=" + id_imovel);
             alert("Imóvel excluído com sucesso!");
             window.location.reload();
-
         } catch (error) {
             console.log(error);
         }
@@ -59,7 +58,6 @@ export default function MinhaConta() {
     function changeModal() {
         setShowModal(!showModal);
     }
-
 
     useEffect(() => {
         if (state.user.email) {
@@ -98,7 +96,15 @@ export default function MinhaConta() {
                 ) : (
                     <div className="flex justify-between items-center m-2">
                         <div className="flex flex-col">
-                            <p className="text-4xl text-black mb-5 ">Meus pets </p>
+                            <p className="text-4xl text-black mb-5 ">Meus imvóveis </p>
+
+                            <button
+                                onClick={() => navigate("/cadastro-imovel/" + user.id_usuario)}
+                                className="bg-black max-w-sm hover:bg-stone-300 text-white font-bold py-2 px-4 my-3 rounded content-end"
+                            >
+                                Adicionar Imóvel
+                            </button>
+
                             {imoveis?.map((imovel, i) => (
                                 <div key={i} className="flex items-center bg-[#fafafa] m-2 shadow-md">
                                     <div
@@ -132,7 +138,7 @@ export default function MinhaConta() {
                                         </button>
                                     ) : (
                                         <button
-                                            className="bg-black hover:bg-stone-300 text-white font-bold py-2 px-4 mx-5 rounded"
+                                            className="bg-red-400 hover:bg-stone-300 text-white font-bold py-2 px-4 mx-5 rounded"
                                             onClick={() => {}}
                                         >
                                             Inativar anúncio
@@ -141,10 +147,10 @@ export default function MinhaConta() {
                                     {/* editar imagem principal */}
                                     <i
                                         className="fas fa-duotone fa-images mx-4 text-2xl text-black hover:text-blue-800 cursor-pointer"
-                                        onClick={() => { setShowModal(true)
-                                            setSelectedImovel(imovel)
-                                        }
-                                    }
+                                        onClick={() => {
+                                            setShowModal(true);
+                                            setSelectedImovel(imovel);
+                                        }}
                                     />
                                     {/* deletar imóvel */}
                                     <i
@@ -154,12 +160,6 @@ export default function MinhaConta() {
                                 </div>
                             ))}
                         </div>
-                        <button
-                            onClick={() => navigate("/cadastro-imovel/" + user.id_usuario)}
-                            className="bg-black hover:bg-stone-300 text-white font-bold py-2 px-4 rounded content-end"
-                        >
-                            Adicionar Imóvel
-                        </button>
                     </div>
                 )}
             </nav>
