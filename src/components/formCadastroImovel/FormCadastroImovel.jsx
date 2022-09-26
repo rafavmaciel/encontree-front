@@ -5,16 +5,16 @@ import { useState } from "react";
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
 
-
 export default function FormCadastroImovel() {
     const [progress, setProgress] = useState(0);
     const navigate = useNavigate();
     let { id_usuario } = useParams();
+    const [loadButton, setLoadButton] = useState(false);
 
     async function handleSubmit(e) {
         try {
-            console.log(id_usuario);
             e.preventDefault();
+            setLoadButton(true);
             const { files } = e.target.fotos;
             var urlsImagens = [];
             let imagens = [];
@@ -22,7 +22,6 @@ export default function FormCadastroImovel() {
                 const imagem = files[key];
                 imagens.push(imagem);
             });
-            console.log(imagens);
             await Promise.all(
                 imagens.map(async (imagem) => {
                     await new Promise((resolve, reject) => {
@@ -61,7 +60,7 @@ export default function FormCadastroImovel() {
                 ponto_referencia: e.target.pontoReferencia.value,
                 quantidade_quartos: e.target.quantidadeQuartos.value,
                 quantidade_banheiros: e.target.quantidadeBanheiros.value,
-                garagem_vaga: e.target.vagaGaragem.value =="0"? false : true,
+                garagem_vaga: e.target.vagaGaragem.value == "0" ? false : true,
                 tipo_imovel: e.target.tipoImovel.value,
                 numero: e.target.numeroCasa.value,
                 url_imagens: { imagens: urlsImagens },
@@ -75,14 +74,14 @@ export default function FormCadastroImovel() {
                     },
                 })
                 .then((response) => {
+                    setLoadButton(false);
                     alert("Imovel cadastrado com sucesso!");
-                    navigate('/minha-conta');
-
+                    navigate("/minha-conta");
                 })
                 .catch((error) => {
-                    alert('Erro ao cadastrar imóvel:   '+error.response.data );
-                }
-            );
+                    setLoadButton(false);
+                    alert("Erro ao cadastrar imóvel:   " + error.response.data);
+                });
         } catch (error) {
             console.log(error);
         }
@@ -255,13 +254,32 @@ export default function FormCadastroImovel() {
                     />
                 </div>
             </div>
-
-            <button
-                type="submit"
-                className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 my-10 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-            >
-                Submit
-            </button>
+            <div className="flex justify-end mt-6 bg-gray-200 rounded-full">
+                <div
+                    className={`${
+                        progress < 70 ? "bg-red-600" : "bg-green-600"
+                    } text-xs font-medium text-blue-100 text-center p-1 leading-none rounded-l-full`}
+                    style={{ width: `${progress}%` }}
+                ></div>
+            </div>
+            {/* botão de enviar */}
+            {loadButton ? (
+                <button
+                    type="submit"
+                    className="mt-4 py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+                >
+                    <div class="spinner-border animate-spin inline-block w-8 h-8 border-4 rounded-full" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+                </button>
+            ) : (
+                <button
+                    type="submit"
+                    className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 my-10 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                >
+                    Enviar
+                </button>
+            )}
         </form>
     );
 }
