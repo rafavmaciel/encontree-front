@@ -12,6 +12,7 @@ import CadastroUsuario from "./pages/cadastroUsuario/CadastroUsuario";
 import { UserProvider } from "./redux/UserReducer";
 import MinhaConta from "./pages/minhaConta/MinhaConta";
 import CadastroImovel from "./pages/cadastroImovel/CadastroImovel";
+import CadastroAnuncio from "./pages/cadastroAnuncio/CadastroAnuncio";
 import PerfilUsuario from './pages/perfil_usuario/index';
 import FiltroImoveis from './pages/filtro_imoveis/index';
 
@@ -31,6 +32,7 @@ function App() {
                         <Route path="/cadastroUsuario" element={<CadastroUsuario />} />
                         <Route path="/minha-conta" element={<MinhaConta />} />
                         <Route path="/cadastro-imovel/:id_usuario" element={<CadastroImovel />} />
+                        <Route path="/cadastro-anuncio/:id_usuario/:id_imovel" element={<CadastroAnuncio />} />
                         <Route path="/perfil_usuario" element={<PerfilUsuario/>}/>
                         <Route path="/filtro_imoveis" element={<FiltroImoveis/>}/>
                     </Routes>
