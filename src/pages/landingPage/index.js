@@ -1,5 +1,4 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Header from '../../components/header/Header';
 import './styles.scss'
 import img_lp from '../../img/landingpageCropped.jpg'
 
