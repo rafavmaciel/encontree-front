@@ -1,5 +1,4 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Header from '../../components/header/Header';
 import './styles.scss'
 
 function PerfilUsuario() {
@@ -13,7 +12,6 @@ function PerfilUsuario() {
 
     return (
     <>
-        <Header/>
         <div className='container blue col-lg-6 col-sm-12'>
             <div>
                 <button type="submit" className="botao_voltar">Voltar</button>
