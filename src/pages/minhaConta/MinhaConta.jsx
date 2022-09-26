@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import UserContext from "../../redux/UserReducer";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import ModalEditarImgs from "../../components/modalEditarImgs/ModalEditarImgs";
 
 export default function MinhaConta() {
     const [loading, setLoading] = useState(true);
@@ -10,6 +11,8 @@ export default function MinhaConta() {
     const [user, setUser] = useState();
     const [imoveis, setImoveis] = useState();
     const [anuncios, setAnuncios] = useState();
+    const [showModal, setShowModal] = useState(false);
+    const [selectedImovel, setSelectedImovel] = useState();
     let id_usuario;
 
     const getUser = async () => {
@@ -53,6 +56,10 @@ export default function MinhaConta() {
         }
     }
 
+    function changeModal() {
+        setShowModal(!showModal);
+    }
+
 
     useEffect(() => {
         if (state.user.email) {
@@ -83,7 +90,7 @@ export default function MinhaConta() {
                     </div>
                 </div>
 
-                {/* lista de pets */}
+                {/* lista de imoveis */}
                 {loading ? (
                     <div className="flex justify-center items-center">
                         <div className="loader ease-linear rounded-full border-8 border-t-8 border-gray-200 h-12 w-12 mb-4"></div>
@@ -134,7 +141,10 @@ export default function MinhaConta() {
                                     {/* editar imagem principal */}
                                     <i
                                         className="fas fa-duotone fa-images mx-4 text-2xl text-black hover:text-blue-800 cursor-pointer"
-                                        onClick={() => {}}
+                                        onClick={() => { setShowModal(true)
+                                            setSelectedImovel(imovel)
+                                        }
+                                    }
                                     />
                                     {/* deletar imóvel */}
                                     <i
@@ -153,6 +163,7 @@ export default function MinhaConta() {
                     </div>
                 )}
             </nav>
+            {showModal ? <ModalEditarImgs changeModal={changeModal} imovel={selectedImovel} /> : null}
         </div>
     );
 }
