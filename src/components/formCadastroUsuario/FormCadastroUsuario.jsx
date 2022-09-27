@@ -1,9 +1,11 @@
 import axios from "axios";
 import React, { useState, useContext } from "react";
 import UserContext from "../../redux/UserReducer";
+import { useNavigate } from "react-router-dom";
 
 export default function FormCadastroUsuario() {
     const { state, dispatch } = useContext(UserContext);
+    const navigate = useNavigate();
 
     function handleSubmit(event) {
         event.preventDefault();
@@ -24,9 +26,10 @@ export default function FormCadastroUsuario() {
             .then((response) => {
                 console.log(response.data);
                 alert(response);
+                navigate("/minha-conta");
             })
             .catch((error) => {
-                console.log(error);
+                alert(error.response.data);
             });
     }
 
