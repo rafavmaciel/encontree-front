@@ -20,6 +20,9 @@ export default function MinhaConta() {
             await axios
                 .get(process.env.REACT_APP_BASE_URL_LOCAL + "user/?email=" + state.user.email)
                 .then((response) => {
+                    if (response.data.length === 0 || response.data[0].id_usuario === undefined)   {
+                        navigate("/login");
+                    }
                     id_usuario = response.data[0]?.id_usuario;
                     setUser(response.data[0]);
                 });
