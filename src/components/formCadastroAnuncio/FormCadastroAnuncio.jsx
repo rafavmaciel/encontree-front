@@ -21,7 +21,7 @@ export default function FormCadastroAnuncio() {
                 imovel_id_imovel: id_imovel,
             };
             axios
-                .post("http://localhost:3003/anuncio", data, {
+                .post(process.env.REACT_APP_BASE_URL_LOCAL+"anuncio", data, {
                     headers: {
                         "Content-Type": "application/json",
                     },

@@ -2,7 +2,7 @@ import axios from "axios";
 export default function ModalEditarImgs(props) {
     async function handleClick(img, imovel) {
         try {
-            await axios.put("http://localhost:3003/imovel-alt-imagem/?id_imovel=" + imovel.id_imovel, {
+            await axios.put(process.env.REACT_APP_BASE_URL_LOCAL+"imovel-alt-imagem/?id_imovel=" + imovel.id_imovel, {
                 img_principal: img,
             }, {
                 headers: {

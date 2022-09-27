@@ -14,7 +14,7 @@ function Login() {
             const user = await signInWithGoogle();
             console.log(user);
             dispatch({type: "SET_USER", payload: user});
-            axios.get("http://localhost:3003/user/?email=" + user.email).then((response) => {
+            axios.get(process.env.REACT_APP_BASE_URL_LOCAL+"user/?email=" + user.email).then((response) => {
                 if (response.data == null) {
                     navigate("/cadastroUsuario");
                 } else {
