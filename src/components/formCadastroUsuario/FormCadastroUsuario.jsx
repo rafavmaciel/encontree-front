@@ -15,7 +15,6 @@ export default function FormCadastroUsuario() {
             idade: event.target.idadeUser.value,
             sexo: event.target.sexoUser.value,
         };
-        console.log(usuario);
         axios
             .post(process.env.REACT_APP_BASE_URL_LOCAL+"user", usuario, {
                 headers: {

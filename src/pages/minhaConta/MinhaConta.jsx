@@ -20,7 +20,7 @@ export default function MinhaConta() {
             await axios
                 .get(process.env.REACT_APP_BASE_URL_LOCAL + "user/?email=" + state.user.email)
                 .then((response) => {
-                    id_usuario = response.data[0].id_usuario;
+                    id_usuario = response.data[0]?.id_usuario;
                     setUser(response.data[0]);
                 });
             await axios
@@ -34,7 +34,6 @@ export default function MinhaConta() {
             await axios
                 .get(process.env.REACT_APP_BASE_URL_LOCAL + "anuncio/?id_usuario=" + id_usuario)
                 .then((response) => {
-                    console.log(response.data);
                     if (response.data.length > 0) {
                         setAnuncios(response.data);
                     }
@@ -49,7 +48,6 @@ export default function MinhaConta() {
         try {
             const anuncio = anuncios.filter((anuncio) => anuncio.imovel_id_imovel === id_imovel);
             const id_anuncio = anuncio[0]?.id_anuncio ? anuncio[0].id_anuncio : null;
-            console.log(id_anuncio + " " + id_imovel);
             if (id_anuncio) {
                 await axios.delete(process.env.REACT_APP_BASE_URL_LOCAL + "anuncio/?id_anuncio=" + id_anuncio);
             }
@@ -69,7 +67,6 @@ export default function MinhaConta() {
         try {
             const anuncio = anuncios.filter((anuncio) => anuncio.imovel_id_imovel === id_imovel);
             const id_anuncio = anuncio[0]?.id_anuncio 
-            console.log(id_anuncio + " " + id_imovel);
             axios
                 .put(process.env.REACT_APP_BASE_URL_LOCAL + "anuncio-status/?id_anuncio=" + id_anuncio)
                 .then((response) => {
@@ -80,11 +77,16 @@ export default function MinhaConta() {
             console.log(error);
         }
     }
+    function logout() {
+        dispatch({ type: "LOGOUT" });
+        navigate("/");
+        // refresh page
+        window.location.reload();
+    }
 
     useEffect(() => {
         if (state.user.email) {
             getUser();
-            console.log(state.user);
         }
     }, [state.user.email]);
 
@@ -103,7 +105,7 @@ export default function MinhaConta() {
                     <div className="flex items-center">
                         <button
                             className="bg-black hover:bg-stone-300 text-white font-bold py-2 px-4 rounded"
-                            // onClick={logout}
+                            onClick={logout}
                         >
                             Sair
                         </button>

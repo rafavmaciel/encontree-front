@@ -6,9 +6,7 @@ export default function Home() {
     const [anuncios, setAnuncios] = useState([]);
 
     useEffect(() => {
-        console.log(process.env.REACT_APP_BASE_URL_LOCAL)
         axios.get(process.env.REACT_APP_BASE_URL_LOCAL+ "anuncio-all").then((response) => {
-            console.log(response.data);
             setAnuncios(response.data);
         });
     }, []);

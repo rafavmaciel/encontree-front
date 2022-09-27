@@ -1,7 +1,28 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./styles.scss";
 import { Link } from "react-router-dom";
+import { useState, useEffect, useContext } from "react";
+import UserContext from "../../redux/UserReducer";
+import axios from "axios";
+
 function Header() {
+    const { state, dispatch } = useContext(UserContext);
+    const [auth, setAuth] = useState(false);
+
+    useEffect(() => {
+        if (state.user.isAuthenticated === true) {
+            axios.get(process.env.REACT_APP_BASE_URL_LOCAL + "user/?email=" + state.user.email).then((response) => {
+                if (response.data == null) {
+                    setAuth(false);
+                } else {
+                    setAuth(true);
+                }
+            });
+        } else {
+            setAuth(false);
+        }
+    }, [state.user.isAuthenticated]);
+    
     return (
         <nav className="bg-white px-2 sm:px-4 py-1 dark:bg-gray-900 w-full z-20 top-0 left-0 border-b border-gray-200 dark:border-gray-600">
             <div className="container flex flex-wrap justify-between items-center mx-auto">
@@ -58,6 +79,9 @@ function Header() {
                                 Home
                             </Link>
                         </li>
+                        { auth ? (
+                            <>
+                            {console.log(auth)}
                         <li>
                             <Link
                                 to="/minha-conta"
@@ -66,6 +90,10 @@ function Header() {
                                 Minha conta
                             </Link>
                         </li>
+                        </>
+                        ) : (
+                            null
+                        )}
                         <li>
                             <a
                                 href="#"
