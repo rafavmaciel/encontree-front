@@ -10,7 +10,7 @@ export default function ModalEditarImgs(props) {
                 },
             });
             alert("Imagem principal alterada com sucesso!");
-            window.location.reload();
+            props.changeModal();
         } catch (error) {
             console.log(error);
         }

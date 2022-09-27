@@ -15,6 +15,7 @@ import CadastroImovel from "./pages/cadastroImovel/CadastroImovel";
 import CadastroAnuncio from "./pages/cadastroAnuncio/CadastroAnuncio";
 import PerfilUsuario from './pages/perfil_usuario/index';
 import FiltroImoveis from './pages/filtro_imoveis/index';
+import {RequireAuth} from './components/requireAuth/RequireAuth';
 
 
 function App() {
@@ -31,9 +32,9 @@ function App() {
                         <Route path="/home" element={<Home />} />
                         <Route path="/anuncioDetais:id" element={<AnuncioDetais />} />
                         <Route path="/cadastroUsuario" element={<CadastroUsuario />} />
-                        <Route path="/minha-conta" element={<MinhaConta />} />
-                        <Route path="/cadastro-imovel/:id_usuario" element={<CadastroImovel />} />
-                        <Route path="/cadastro-anuncio/:id_usuario/:id_imovel" element={<CadastroAnuncio />} />
+                        <Route path="/minha-conta" element={<RequireAuth> <MinhaConta/> </RequireAuth> } />
+                        <Route path="/cadastro-imovel/:id_usuario" element={<RequireAuth> <CadastroImovel/> </RequireAuth>} />
+                        <Route path="/cadastro-anuncio/:id_usuario/:id_imovel" element={<RequireAuth> <CadastroAnuncio/></RequireAuth>} />
                         <Route path="/perfil_usuario" element={<PerfilUsuario/>}/>
                         <Route path="/filtro_imoveis" element={<FiltroImoveis/>}/>
                     </Routes>

@@ -24,13 +24,19 @@ export default function FormCadastroUsuario() {
                 },
             })
             .then((response) => {
-                console.log(response.data);
-                alert(response);
+                alert("Usuário cadastrado com sucesso!");
                 navigate("/minha-conta");
             })
             .catch((error) => {
-                alert(error.response.data);
+                console.log(error);
+                tratarErros(error)
             });
+    }
+
+    function tratarErros(error){
+        if(error){
+            alert(error.response.data);
+        }
     }
 
     return (

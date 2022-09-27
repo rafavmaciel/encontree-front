@@ -79,10 +79,16 @@ export default function FormCadastroImovel() {
                 })
                 .catch((error) => {
                     setLoadButton(false);
-                    alert("Erro ao cadastrar imóvel:   " + error.response.data);
+                    tratarErros(error)
                 });
         } catch (error) {
-            console.log(error);
+            tratarErros(error)
+        }
+    }
+
+    function tratarErros(error){
+        if(error){
+            alert(error.response.data);
         }
     }
     return (

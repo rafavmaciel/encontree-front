@@ -31,10 +31,16 @@ export default function FormCadastroAnuncio() {
                     alert("Anuncio cadastrado com sucesso!");
                 })
                 .catch((error) => {
-                    alert(error.response.data);
+                    tratarErros(error)
                 });
         } catch (error) {
-            console.log(error);
+            tratarErros(error)
+        }
+    }
+
+    function tratarErros(error){
+        if(error){
+            alert(error.response.data);
         }
     }
 

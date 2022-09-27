@@ -75,7 +75,6 @@ export default function MinhaConta() {
                 .put(process.env.REACT_APP_BASE_URL_LOCAL + "anuncio-status/?id_anuncio=" + id_anuncio)
                 .then((response) => {
                     alert("Status alterado com sucesso!");
-                    window.location.reload();
                 });
         } catch (error) {
             console.log(error);
@@ -92,7 +91,7 @@ export default function MinhaConta() {
         if (state.user.email) {
             getUser();
         }
-    }, [state.user.email]);
+    }, [state.user.email, anuncios, imoveis]);
 
     return (
         <div className="py-5">
