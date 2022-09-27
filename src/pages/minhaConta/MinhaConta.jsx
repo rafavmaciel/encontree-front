@@ -65,7 +65,8 @@ export default function MinhaConta() {
 
     async function handleChangeStatus(id_imovel) {
         try {
-            const anuncio = anuncios.filter((anuncio) => anuncio.imovel_id_imovel === id_imovel);
+            
+            const anuncio = anuncios?.filter((anuncio) => anuncio.imovel_id_imovel === id_imovel);
             const id_anuncio = anuncio[0]?.id_anuncio 
             axios
                 .put(process.env.REACT_APP_BASE_URL_LOCAL + "anuncio-status/?id_anuncio=" + id_anuncio)
@@ -152,7 +153,7 @@ export default function MinhaConta() {
                                     {/* publicar anuncio */}
                                     {/* verifica se já tem anuncio desse imóvel */}
                                     {anuncios?.filter((anuncio) => anuncio.imovel_id_imovel === imovel.id_imovel)
-                                        .length === 0 ? (
+                                        .length === 0|| anuncios == undefined ? (
                                         <button
                                             className="bg-black hover:bg-stone-300 text-white font-bold py-2 px-4 mx-5 rounded"
                                             onClick={() =>
