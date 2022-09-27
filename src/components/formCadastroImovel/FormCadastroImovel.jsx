@@ -68,7 +68,7 @@ export default function FormCadastroImovel() {
                 usuario_id_usuario: id_usuario,
             };
             await axios
-                .post(`http://localhost:3003/imovel`, data, {
+                .post(process.env.REACT_APP_BASE_URL_LOCAL+"imovel", data, {
                     headers: {
                         "Content-Type": "application/json",
                     },

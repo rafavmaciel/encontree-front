@@ -17,17 +17,17 @@ export default function MinhaConta() {
 
     const getUser = async () => {
         try {
-            await axios.get("http://localhost:3003/user/?email=" + state.user.email).then((response) => {
+            await axios.get(process.env.REACT_APP_BASE_URL_LOCAL+ "user/?email=" + state.user.email).then((response) => {
                 id_usuario = response.data[0].id_usuario;
                 setUser(response.data[0]);
             });
-            await axios.get("http://localhost:3003/imovel/?id_usuario=" + id_usuario).then((response) => {
+            await axios.get(process.env.REACT_APP_BASE_URL_LOCAL + "imovel/?id_usuario=" + id_usuario).then((response) => {
                 if (response.data.length > 0) {
                     setImoveis(response.data);
                 }
                 setLoading(false);
             });
-            await axios.get("http://localhost:3003/anuncio/?id_usuario=" + id_usuario).then((response) => {
+            await axios.get(process.env.REACT_APP_BASE_URL_LOCAL + "anuncio/?id_usuario=" + id_usuario).then((response) => {
                 console.log(response.data);
                 if (response.data.length > 0) {
                     setAnuncios(response.data);
@@ -45,9 +45,9 @@ export default function MinhaConta() {
             const id_anuncio = anuncio[0]?.id_anuncio ? anuncio[0].id_anuncio : null;
             console.log(id_anuncio + " " + id_imovel);
             if (id_anuncio) {
-                await axios.delete("http://localhost:3003/anuncio/?id_anuncio=" + id_anuncio);
+                await axios.delete(process.env.REACT_APP_BASE_URL_LOCAL + "anuncio/?id_anuncio=" + id_anuncio);
             }
-            await axios.delete("http://localhost:3003/imovel/?id_imovel=" + id_imovel);
+            await axios.delete(process.env.REACT_APP_BASE_URL_LOCAL + "imovel/?id_imovel=" + id_imovel);
             alert("Imóvel excluído com sucesso!");
             window.location.reload();
         } catch (error) {

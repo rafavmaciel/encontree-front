@@ -17,7 +17,7 @@ export default function FormCadastroUsuario() {
         };
         console.log(usuario);
         axios
-            .post("http://localhost:3003/user", usuario, {
+            .post(process.env.REACT_APP_BASE_URL_LOCAL+"user", usuario, {
                 headers: {
                     "Content-Type": "application/json",
                 },
