@@ -40,7 +40,6 @@ export default function FormCadastroImovel() {
                                 getDownloadURL(uploadTask.snapshot.ref)
                                     .then((downloadURL) => {
                                         urlsImagens.push(downloadURL);
-                                        console.log(urlsImagens);
                                         resolve(urlsImagens);
                                     })
                                     .catch((error) => {
