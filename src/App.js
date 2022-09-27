@@ -18,6 +18,7 @@ import FiltroImoveis from './pages/filtro_imoveis/index';
 
 
 function App() {
+    console.log(process.env.REACT_APP_BASE_URL_LOCAL);
     return (
         <>
             <UserProvider>

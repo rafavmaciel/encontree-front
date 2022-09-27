@@ -17,23 +17,29 @@ export default function MinhaConta() {
 
     const getUser = async () => {
         try {
-            await axios.get(process.env.REACT_APP_BASE_URL_LOCAL+ "user/?email=" + state.user.email).then((response) => {
-                id_usuario = response.data[0].id_usuario;
-                setUser(response.data[0]);
-            });
-            await axios.get(process.env.REACT_APP_BASE_URL_LOCAL + "imovel/?id_usuario=" + id_usuario).then((response) => {
-                if (response.data.length > 0) {
-                    setImoveis(response.data);
-                }
-                setLoading(false);
-            });
-            await axios.get(process.env.REACT_APP_BASE_URL_LOCAL + "anuncio/?id_usuario=" + id_usuario).then((response) => {
-                console.log(response.data);
-                if (response.data.length > 0) {
-                    setAnuncios(response.data);
-                }
-                setLoading(false);
-            });
+            await axios
+                .get(process.env.REACT_APP_BASE_URL_LOCAL + "user/?email=" + state.user.email)
+                .then((response) => {
+                    id_usuario = response.data[0].id_usuario;
+                    setUser(response.data[0]);
+                });
+            await axios
+                .get(process.env.REACT_APP_BASE_URL_LOCAL + "imovel/?id_usuario=" + id_usuario)
+                .then((response) => {
+                    if (response.data.length > 0) {
+                        setImoveis(response.data);
+                    }
+                    setLoading(false);
+                });
+            await axios
+                .get(process.env.REACT_APP_BASE_URL_LOCAL + "anuncio/?id_usuario=" + id_usuario)
+                .then((response) => {
+                    console.log(response.data);
+                    if (response.data.length > 0) {
+                        setAnuncios(response.data);
+                    }
+                    setLoading(false);
+                });
         } catch (error) {
             console.log(error);
         }
@@ -57,6 +63,22 @@ export default function MinhaConta() {
 
     function changeModal() {
         setShowModal(!showModal);
+    }
+
+    async function handleChangeStatus(id_imovel) {
+        try {
+            const anuncio = anuncios.filter((anuncio) => anuncio.imovel_id_imovel === id_imovel);
+            const id_anuncio = anuncio[0]?.id_anuncio 
+            console.log(id_anuncio + " " + id_imovel);
+            axios
+                .put(process.env.REACT_APP_BASE_URL_LOCAL + "anuncio-status/?id_anuncio=" + id_anuncio)
+                .then((response) => {
+                    alert("Status alterado com sucesso!");
+                    window.location.reload();
+                });
+        } catch (error) {
+            console.log(error);
+        }
     }
 
     useEffect(() => {
@@ -126,6 +148,7 @@ export default function MinhaConta() {
                                         </div>
                                     </div>
                                     {/* publicar anuncio */}
+                                    {/* verifica se já tem anuncio desse imóvel */}
                                     {anuncios?.filter((anuncio) => anuncio.imovel_id_imovel === imovel.id_imovel)
                                         .length === 0 ? (
                                         <button
@@ -137,12 +160,27 @@ export default function MinhaConta() {
                                             Cadastrar anúncio
                                         </button>
                                     ) : (
-                                        <button
-                                            className="bg-red-400 hover:bg-stone-300 text-white font-bold py-2 px-4 mx-5 rounded"
-                                            onClick={() => {}}
-                                        >
-                                            Inativar anúncio
-                                        </button>
+                                        <>
+                                        { anuncios?.filter((anuncio) => anuncio.imovel_id_imovel === imovel.id_imovel)[0].status === 1 ? (
+                                            <button
+                                                className="bg-red-400 hover:bg-stone-300 text-white font-bold py-2 px-4 mx-5 rounded"
+                                                onClick={() => {
+                                                    handleChangeStatus(imovel.id_imovel);
+                                                }}
+                                            >
+                                                Inativar anúncio
+                                            </button>
+                                        ) : (
+                                            <button
+                                                className="bg-green-400 hover:bg-stone-300 text-white font-bold py-2 px-4 mx-5 rounded"
+                                                onClick={() => {
+                                                    handleChangeStatus(imovel.id_imovel);
+                                                }}
+                                            >
+                                                Ativar anúncio
+                                            </button>
+                                        )}
+                                        </>
                                     )}
                                     {/* editar imagem principal */}
                                     <i

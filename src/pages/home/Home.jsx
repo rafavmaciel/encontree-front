@@ -21,13 +21,14 @@ export default function Home() {
                     {
                         anuncios.map((anuncio) => {
                             return (
+                                anuncio.status?(
                                 <GridPrincipal
                                     key={anuncio.id}
                                     img={anuncio.img_principal}
                                     title={anuncio.titulo}
                                     description={anuncio.descricao_anuncio}
                                     local={anuncio.estado}
-                                />
+                                />):null
                             );
                         })
                     }
