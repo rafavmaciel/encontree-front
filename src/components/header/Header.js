@@ -103,7 +103,6 @@ function Header() {
                         </li>
                         {auth ? (
                             <>
-                                {console.log(auth)}
                                 <li>
                                     <Link
                                         to="/minha-conta"

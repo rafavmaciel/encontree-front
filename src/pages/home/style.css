@@ -27,10 +27,16 @@
   .paginationActive a {
     color: white;
     background-color: #2b2eff;
+    display: inline;
   }
   
   .paginationDisabled a {
     color: grey;
     background-color: grey;
+    display: none;
+  }
+
+  .nextBttn {
+    margin-left: 10px;
     display: none;
   }

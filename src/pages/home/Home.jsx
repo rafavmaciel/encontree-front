@@ -5,6 +5,7 @@ import axios from "axios";
 import UserContext from "../../redux/UserReducer";
 import ReactPaginate from "react-paginate";
 import "./style.css";
+import ModalDetalhesAnuncio from "../../components/modalDetalhesAnuncio/ModalDetalhesAnuncio";
 
 export default function Home() {
     const [anuncios, setAnuncios] = useState([]);
@@ -13,6 +14,19 @@ export default function Home() {
     const usersPerPage = 6;
     const pagesVisited = pageNumber * usersPerPage;
     const pageCount = Math.ceil(anuncios.length / usersPerPage);
+    const [modalStatus, setModalStatus] = useState(false);
+    const [anuncioModal, setAnuncioModal] = useState({});
+
+    function changeModal() {
+        setModalStatus(!modalStatus);
+    }
+    function abrirModal(anuncio) {
+
+        setModalStatus(true);
+        setAnuncioModal(anuncio);
+        //console.log(anuncioModal);
+    }
+
 
     function filtrarAnuncios() {
         try {
@@ -48,9 +62,9 @@ export default function Home() {
         setPageNumber(selected);
     };
 
+
     useEffect(() => {
         axios.get(process.env.REACT_APP_BASE_URL_LOCAL + "anuncio-all").then((response) => {
-            
             setAnuncios(response.data);
         });
     }, []);
@@ -64,14 +78,16 @@ export default function Home() {
             <div className="p-10 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-5">
                 {anuncios.slice(pagesVisited, pagesVisited + usersPerPage).map((anuncio) => {
                     return anuncio.status ? (
-                        <GridPrincipal
-                            key={anuncio.id}
-                            id={anuncio.id}
-                            img={anuncio.img_principal}
-                            title={anuncio.titulo}
-                            description={anuncio.descricao_anuncio}
-                            local={anuncio.estado + " - " + anuncio.cidade}
-                        />
+                        <a onClick={()=> abrirModal(anuncio)}>
+                            <GridPrincipal
+                                key={anuncio.id}
+                                id={anuncio.id}
+                                img={anuncio.img_principal}
+                                title={anuncio.titulo}
+                                description={anuncio.descricao_anuncio}
+                                local={anuncio.estado + " - " + anuncio.cidade}
+                            />
+                        </a>
                     ) : null;
                 })}
             </div>
@@ -82,13 +98,13 @@ export default function Home() {
         <>
             <div className="mt-14">
                 <div className="flex flex-row">
-                    <div className="flex fle-col-3 place-items-start mt-20 mx-4 ">
+                    <div className="flex flex-col-3 place-items-start mt-20 mx-4 ">
                         <LateralSearch />
                     </div>
                     <div className="col-9">
                         {itensGrid()}
                         <div className="flex justify-center text-white">
-                            <ReactPaginate 
+                            <ReactPaginate
                                 previousLabel={"Previous"}
                                 nextLabel={"Next"}
                                 pageCount={pageCount}
@@ -103,6 +119,7 @@ export default function Home() {
                     </div>
                 </div>
             </div>
+            {modalStatus ? <ModalDetalhesAnuncio changeModal={changeModal} anuncio={anuncioModal} /> : null}
         </>
     );
 }
