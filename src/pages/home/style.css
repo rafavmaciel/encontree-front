@@ -32,4 +32,5 @@
   .paginationDisabled a {
     color: grey;
     background-color: grey;
+    display: none;
   }

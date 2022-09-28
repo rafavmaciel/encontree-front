@@ -81,7 +81,7 @@ export default function LateralSearch(props) {
                 </button>
                 {/* limpar pesquisa */}
                 <button
-                    className="bg-neutral-500 hover:bg-stone-300 text-white font-bold py-2 px-4 mt-3 rounded"
+                    className="bg-neutral-100 hover:bg-stone-300 text-black font-bold py-2 px-4 mt-3 rounded"
                     onClick={() => handleLimparPesquisa()}
                 >
                     Limpar

@@ -10,7 +10,7 @@ export default function Home() {
     const [anuncios, setAnuncios] = useState([]);
     const { state, dispatch } = useContext(UserContext);
     const [pageNumber, setPageNumber] = useState(0);
-    const usersPerPage = 3;
+    const usersPerPage = 6;
     const pagesVisited = pageNumber * usersPerPage;
     const pageCount = Math.ceil(anuncios.length / usersPerPage);
 
@@ -50,6 +50,7 @@ export default function Home() {
 
     useEffect(() => {
         axios.get(process.env.REACT_APP_BASE_URL_LOCAL + "anuncio-all").then((response) => {
+            
             setAnuncios(response.data);
         });
     }, []);
@@ -65,10 +66,11 @@ export default function Home() {
                     return anuncio.status ? (
                         <GridPrincipal
                             key={anuncio.id}
+                            id={anuncio.id}
                             img={anuncio.img_principal}
                             title={anuncio.titulo}
                             description={anuncio.descricao_anuncio}
-                            local={anuncio.estado}
+                            local={anuncio.estado + " - " + anuncio.cidade}
                         />
                     ) : null;
                 })}
@@ -80,7 +82,7 @@ export default function Home() {
         <>
             <div className="mt-14">
                 <div className="flex flex-row">
-                    <div className="flex fle-col-3 place-items-start mt-20 mx-5 ">
+                    <div className="flex fle-col-3 place-items-start mt-20 mx-4 ">
                         <LateralSearch />
                     </div>
                     <div className="col-9">
