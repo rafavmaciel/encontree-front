@@ -51,6 +51,11 @@ export const UserProvider = ({ children }) => {
                         isAuthenticated: false,
                     },
                 };
+                case "SET_FILTROS_PESQUISA":
+                    return {
+                        ...state,
+                        filtrosPesquisa: action.payload,
+                    };
                 
             default:
                 return state;
