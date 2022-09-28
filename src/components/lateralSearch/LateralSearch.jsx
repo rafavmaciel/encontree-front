@@ -26,7 +26,7 @@ export default function LateralSearch(props) {
     }
 
     return (
-        <div className="w-60 max-h-300 bg-blue-500 rounded-lg border-4 border-blue-300 p-10 transition duration-500 hover:scale-105 ">
+        <div className="w-60 max-h-300 bg-blue-500 rounded-lg border-4 border-blue-200 p-10 transition duration-500 hover:scale-105 ">
             <div color="blue" size="sm">
                 <h2 className="text-black text-2xl px-2 mb-4">Pesquisar</h2>
             </div>
