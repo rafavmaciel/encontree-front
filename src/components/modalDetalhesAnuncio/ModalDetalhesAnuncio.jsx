@@ -13,7 +13,7 @@ export default function ModalDetalhesAnuncio(props) {
         <div className="fixed inset-0 z-10 overflow-y-auto">
             <div className="fixed inset-0 w-full h-full bg-black opacity-40" onClick={() => props.changeModal()}></div>
             <div className="flex items-center min-h-screen px-4 py-8">
-                <div className="relative w-3/3 p-10 mx-auto bg-white rounded-md shadow-lg">
+                <div className="relative w-2/3 p-10 mx-auto bg-white rounded-md shadow-lg">
                     <div className="flex flex-col mb-4 items-between justify-between">
                         <h2 className="text-2xl font-bold mx-2">{props.anuncio.titulo}</h2>
                     </div>
@@ -28,9 +28,10 @@ export default function ModalDetalhesAnuncio(props) {
                             <div className="flex flex-col  ">
                                 <p className="text-xl font-bold text-blue-700 ">Caracteristicas:</p>
                             </div>
-                            <i className="fas fa-map-marker-alt mb-3 fa-lg mt-[3px] inline-flex items-center text-black capitalize">
-                                {props.anuncio.cidade + "-" + props.anuncio.estado}
-                            </i>
+                            <div className="flex flex-row ">
+                                <p className="text-l font-bold text-blue-700 capitalize">Localização:</p>
+                                <p className="text-l font-bold ml-2">{props.anuncio.cidade + "-" + props.anuncio.estado}</p>
+                            </div>
                             <div className="flex flex-row ">
                                 <p className="text-l font-bold text-blue-700 capitalize">Bairro:</p>
                                 <p className="text-l font-bold ml-2 capitalize">{props.anuncio.bairro}</p>
@@ -75,7 +76,7 @@ export default function ModalDetalhesAnuncio(props) {
                         <div className="flex flex-col ">
                             <p className="text-lg font-bold">Descrição:</p>
                         </div>
-                        <p className="text-l ">{props.anuncio.descricao_anuncio}</p>
+                        <p className="text-l flex-wrap ">{props.anuncio.descricao_anuncio}</p>
                         {props.anuncio.ponto_referencia ? (
                             <div className="flex flex-row ">
                                 <p className="text-l font-bold text-blue-700">Ponto de referência:</p>
@@ -99,5 +100,3 @@ export default function ModalDetalhesAnuncio(props) {
         </div>
     );
 }
-
-
