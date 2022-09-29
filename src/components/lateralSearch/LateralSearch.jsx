@@ -8,6 +8,8 @@ export default function LateralSearch(props) {
         estado: null,
         cidade: null,
         valorMaxAluguel: null,
+        restricaoSexo: null,
+        restricaoAnimal: null,
     });
 
     function handleClick() {
@@ -15,11 +17,13 @@ export default function LateralSearch(props) {
         dispatch({ type: "SET_FILTROS_PESQUISA", payload: filtros });
     }
 
-    function handleLimparPesquisa() {
+    function handleLimparPesquisa(e) {
         setFiltros({
             estado: null,
             cidade: null,
             valorMaxAluguel: null,
+            restricaoSexo: null,
+            restricaoAnimal: null,
         });
 
         dispatch({ type: "SET_FILTROS_PESQUISA", payload: filtros });
@@ -42,7 +46,9 @@ export default function LateralSearch(props) {
                             onChange={(e) => setFiltros({ ...filtros, estado: e.target.value })}
                             placeholder="Estado"
                         >
-                            <option value={null} disabled>Selecione</option>
+                            <option value={null} disabled>
+                                Selecione
+                            </option>
                             {estadosBrasileiros.map((estado) => (
                                 <option key={Object.keys(estado)} value={Object.keys(estado)}>
                                     {Object.values(estado)}
@@ -70,11 +76,32 @@ export default function LateralSearch(props) {
                             onChange={(e) => setFiltros({ ...filtros, valorMaxAluguel: e.target.value })}
                         />
                     </div>
+                    <div className="flex flex-col items-center my-1">
+                        <div color="gray" size="sm">
+                            <h2 className="text-white text-sm">Restrição de gênenro</h2>
+                        </div>
+                        <select className="w-40 h-10 border-2 border-gray-300 rounded-md" onChange={ (e)=> setFiltros({ ...filtros, restricaoSexo: e.target.value })} >
+                            <option value="nao-possui">Não</option>
+                            <option value="apenas-mulher">Aceita apenas mulher</option>
+                            <option value="apenas-homem">Aceita apenas homem</option>
+                        </select>
+                    </div>
+                    <div className="flex flex-col items-center my-1">
+                        <div color="gray" size="sm">
+                            <h2 className="text-white text-sm">Aceita animal?</h2>
+                        </div>
+                        <select className="w-40 h-10 border-2 border-gray-300 rounded-md" onChange={ (e)=> setFiltros({ ...filtros, restricaoAnimal: e.target.value })} >
+                            <option value="nao-">Não</option>
+                            <option value="pequeno-porte">Aceita pequeno porte</option>
+                            <option value="aceita">Aceita</option>
+                        </select>
+                    </div>
                 </div>
             </div>
             <div>
                 <button
-                    type="button" class="text-white bg-gray-800 mt-3 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700"
+                    type="button"
+                    class="text-white bg-gray-800 mt-3 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700"
                     onClick={handleClick}
                 >
                     Pesquisar
@@ -82,7 +109,7 @@ export default function LateralSearch(props) {
                 {/* limpar pesquisa */}
                 <button
                     className="bg-neutral-100 hover:bg-stone-300 text-black font-bold py-2 px-4 mt-3 rounded"
-                    onClick={() => handleLimparPesquisa()}
+                    onClick={(e) => handleLimparPesquisa(e)}
                 >
                     Limpar
                 </button>

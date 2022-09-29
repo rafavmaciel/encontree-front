@@ -8,7 +8,7 @@ export default function GridPrincipal(props) {
                     <img className="rounded-t-lg w-full  " src={props.img} alt="" />
                 </a>
             </div>
-            <div className="p-3">
+            <div className="p-3 min-h-500">
                 <h5 className="mb-2 text-2xl font-bold ">{props.title}</h5>
                 <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">{props.description}</p>
                 <i className="fas fa-map-marker-alt fa-lg mt-[3px] inline-flex items-center text-sky-800">{props.local}</i>
