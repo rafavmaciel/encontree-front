@@ -96,7 +96,7 @@ export default function Home() {
             <div className="p-10 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-5">
                 {anuncios.slice(pagesVisited, pagesVisited + usersPerPage).map((anuncio) => {
                     return anuncio.status ? (
-                        <a onClick={() => abrirModal(anuncio)}>
+                        <a onClick={() => abrirModal(anuncio)}  >
                             <GridPrincipal
                                 key={anuncio.id}
                                 id={anuncio.id}

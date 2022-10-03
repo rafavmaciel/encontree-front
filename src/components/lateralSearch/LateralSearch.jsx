@@ -17,16 +17,23 @@ export default function LateralSearch(props) {
         dispatch({ type: "SET_FILTROS_PESQUISA", payload: filtros });
     }
 
-    function handleLimparPesquisa(e) {
-        setFiltros({
+    function handleLimparPesquisa() {
+        document.getElementById("buscaEstado").value = "";
+        document.getElementById("buscaCidade").value = "";
+        document.getElementById("valorMaxAluguel").value = "";
+        document.getElementById("restricaoSexo").value = "";
+        document.getElementById("restricaoAnimal").value = "";
+        let filtrosVazios = {
             estado: null,
             cidade: null,
             valorMaxAluguel: null,
             restricaoSexo: null,
             restricaoAnimal: null,
-        });
+        };
+        setFiltros(filtrosVazios);
 
-        dispatch({ type: "SET_FILTROS_PESQUISA", payload: filtros });
+        dispatch({ type: "SET_FILTROS_PESQUISA", payload: filtrosVazios });
+
     }
 
     return (
@@ -46,7 +53,7 @@ export default function LateralSearch(props) {
                             onChange={(e) => setFiltros({ ...filtros, estado: e.target.value })}
                             placeholder="Estado"
                         >
-                            <option value={null} disabled>
+                            <option value={null} disabled="disabled" selected="true">
                                 Selecione
                             </option>
                             {estadosBrasileiros.map((estado) => (
@@ -61,6 +68,7 @@ export default function LateralSearch(props) {
                             <h2 className="text-white text-sm">Cidade</h2>
                         </div>
                         <input
+                            id = "buscaCidade"
                             type="text"
                             className="w-40 h-10 border-2 border-gray-300 rounded-md"
                             onChange={(e) => setFiltros({ ...filtros, cidade: e.target.value })}
@@ -71,6 +79,7 @@ export default function LateralSearch(props) {
                             <h2 className="text-white text-sm">Valor máximo</h2>
                         </div>
                         <input
+                            id = "valorMaxAluguel"
                             type="text"
                             className="w-40 h-10 border-2 border-gray-300 rounded-md"
                             onChange={(e) => setFiltros({ ...filtros, valorMaxAluguel: e.target.value })}
@@ -80,7 +89,14 @@ export default function LateralSearch(props) {
                         <div color="gray" size="sm">
                             <h2 className="text-white text-sm">Restrição de gênenro</h2>
                         </div>
-                        <select className="w-40 h-10 border-2 border-gray-300 rounded-md" onChange={ (e)=> setFiltros({ ...filtros, restricaoSexo: e.target.value })} >
+                        <select
+                            className="w-40 h-10 border-2 border-gray-300 rounded-md"
+                            onChange={(e) => setFiltros({ ...filtros, restricaoSexo: e.target.value })}
+                            id="restricaoSexo"
+                        >
+                            <option value={null} disabled="disabled" selected="true">
+                                Selecione
+                            </option>
                             <option value="nao-possui">Não</option>
                             <option value="apenas-mulher">Aceita apenas mulher</option>
                             <option value="apenas-homem">Aceita apenas homem</option>
@@ -90,7 +106,14 @@ export default function LateralSearch(props) {
                         <div color="gray" size="sm">
                             <h2 className="text-white text-sm">Aceita animal?</h2>
                         </div>
-                        <select className="w-40 h-10 border-2 border-gray-300 rounded-md" onChange={ (e)=> setFiltros({ ...filtros, restricaoAnimal: e.target.value })} >
+                        <select
+                            className="w-40 h-10 border-2 border-gray-300 rounded-md"
+                            onChange={(e) => setFiltros({ ...filtros, restricaoAnimal: e.target.value })}
+                            id="restricaoAnimal"
+                        >
+                            <option value={null} disabled="disabled" selected="true">
+                                Selecione
+                            </option>
                             <option value="nao-">Não</option>
                             <option value="pequeno-porte">Aceita pequeno porte</option>
                             <option value="aceita">Aceita</option>
@@ -101,7 +124,7 @@ export default function LateralSearch(props) {
             <div>
                 <button
                     type="button"
-                    class="text-white bg-gray-800 mt-3 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700"
+                    className="text-white bg-gray-800 mt-3 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700"
                     onClick={handleClick}
                 >
                     Pesquisar
@@ -109,7 +132,7 @@ export default function LateralSearch(props) {
                 {/* limpar pesquisa */}
                 <button
                     className="bg-neutral-100 hover:bg-stone-300 text-black font-bold py-2 px-4 mt-3 rounded"
-                    onClick={(e) => handleLimparPesquisa(e)}
+                    onClick={handleLimparPesquisa}
                 >
                     Limpar
                 </button>

@@ -3,6 +3,7 @@ import UserContext from "../../redux/UserReducer";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import ModalEditarImgs from "../../components/modalEditarImgs/ModalEditarImgs";
+import CardInformacoesUser from "../../components/cardInformaçõesUser/CardInformacoesUser";
 
 export default function MinhaConta() {
     const [loading, setLoading] = useState(true);
@@ -97,23 +98,7 @@ export default function MinhaConta() {
         <div className="py-5">
             <nav className="flex-col max-w-7xl mx-auto ">
                 {/* infromações do usuário */}
-                <div className="flex justify-between items-center bg-blue-500 mb-7 border-8 border-t-8 shadow-md p-3">
-                    <div className="flex items-center">
-                        <img src={state.user.photoUrl} style={{}} referrerPolicy="no-referrer" />
-                        <div className="ml-8 mr-8">
-                            <p className="text-4xl text-black">{state.user.user ? state.user.user : state.nomeUser}</p>
-                            <p className="text-base text-black">{state.user.email}</p>
-                        </div>
-                    </div>
-                    <div className="flex items-center">
-                        <button
-                            className="bg-black hover:bg-stone-300 text-white font-bold py-2 px-4 rounded"
-                            onClick={logout}
-                        >
-                            Sair
-                        </button>
-                    </div>
-                </div>
+                    <CardInformacoesUser user={state.user} logout={logout} />
 
                 {/* lista de imoveis */}
                 {loading ? (
@@ -134,10 +119,10 @@ export default function MinhaConta() {
 
                             {imoveis?.map((imovel, i) => (
                                 <div key={i} className="flex items-center bg-[#fafafa] m-2 shadow-md">
-                                    <div
+                                    <div 
                                         className="flex items-center max-w-lg transition duration-500 hover:scale-105 hover:bg-blue-200"
                                         id={i}
-                                        onClick={() => navigate("/imovel/" + imovel.id_imovel)}
+                                        onClick={() => navigate("/editar-imovel/" + imovel.id_imovel)}
                                     >
                                         <img
                                             className="w-300"
