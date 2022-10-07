@@ -14,6 +14,7 @@ export default function MinhaConta() {
     const [anuncios, setAnuncios] = useState();
     const [showModal, setShowModal] = useState(false);
     const [selectedImovel, setSelectedImovel] = useState();
+    const [render, setRender] = useState(false);
     let id_usuario;
 
     const getUser = async () => {
@@ -48,6 +49,9 @@ export default function MinhaConta() {
         }
     };
 
+    function renderComponent() {
+        setRender(!render);
+    }
     async function handleDeleteImovel(id_imovel) {
         try {
             const anuncio = anuncios.filter((anuncio) => anuncio.imovel_id_imovel === id_imovel);
@@ -57,7 +61,8 @@ export default function MinhaConta() {
             }
             await axios.delete(process.env.REACT_APP_BASE_URL_LOCAL + "imovel/?id_imovel=" + id_imovel);
             alert("Imóvel excluído com sucesso!");
-            window.location.reload();
+            setAnuncios(anuncios.filter((anuncio) => anuncio.imovel_id_imovel !== id_imovel));
+            renderComponent()
         } catch (error) {
             console.log(error);
         }
@@ -77,6 +82,7 @@ export default function MinhaConta() {
                 .then((response) => {
                     alert("Status alterado com sucesso!");
                 });
+                renderComponent()
         } catch (error) {
             console.log(error);
         }
@@ -92,13 +98,13 @@ export default function MinhaConta() {
         if (state.user.email) {
             getUser();
         }
-    }, [state.user.email, anuncios, imoveis]);
+    }, [state.user.email, render]);
 
     return (
         <div className="py-5">
             <nav className="flex-col max-w-7xl mx-auto ">
                 {/* infromações do usuário */}
-                    <CardInformacoesUser user={state.user} logout={logout} />
+                    <CardInformacoesUser user={state.user} logout={logout}  />
 
                 {/* lista de imoveis */}
                 {loading ? (
@@ -191,7 +197,7 @@ export default function MinhaConta() {
                     </div>
                 )}
             </nav>
-            {showModal ? <ModalEditarImgs changeModal={changeModal} imovel={selectedImovel} /> : null}
+            {showModal ? <ModalEditarImgs changeModal={changeModal} imovel={selectedImovel} renderComponent= {renderComponent} /> : null}
         </div>
     );
 }
