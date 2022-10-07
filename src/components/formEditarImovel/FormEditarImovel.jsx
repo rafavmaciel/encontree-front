@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { estadosBrasileiros } from "../../content/dadosFormulario";
 
 export default function FormEditarImovel(props) {
+    const navigate = useNavigate();
     let {id_imovel} = useParams();
     const [imovel, setImovel] = useState({});
     const [loadButton, setLoadButton] = useState(false);
@@ -37,6 +38,8 @@ export default function FormEditarImovel(props) {
         axios.put(process.env.REACT_APP_BASE_URL_LOCAL + "imovel/?id_imovel="+ id_imovel, data).then((response) => {
             alert("Imóvel editado com sucesso");
             setLoadButton(false);
+            navigate("/minha-conta");
+            
         }).catch((err) => {
             console.log(err);
             alert("Erro ao editar imóvel");
