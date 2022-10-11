@@ -72,7 +72,7 @@ export default function ModalDetalhesAnuncio(props) {
                             </div>
                             <div className="flex flex-row ">
                                 <p className="text-xl font-bold text-blue-700">Valor:</p>
-                                <p className="text-xl font-bold ml-2">R$ {props.anuncio.valor}</p>
+                                <p className="text-xl font-bold ml-2">R$ {props.anuncio.valor_aluguel}</p>
                             </div>
                         </div>
                     </div>
