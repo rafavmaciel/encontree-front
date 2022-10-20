@@ -17,12 +17,14 @@ import PerfilUsuario from './pages/perfil_usuario/index';
 import FiltroImoveis from './pages/filtro_imoveis/index';
 import {RequireAuth} from './components/requireAuth/RequireAuth';
 import EditarImovel from "./pages/editarImovel/EditarImovel";
+import {QueryClient, QueryClientProvider} from 'react-query';
 
 
 function App() {
-    console.log(process.env.REACT_APP_BASE_URL_LOCAL);
+    const client = new QueryClient();
     return (
         <>
+        <QueryClientProvider client={client}>
             <UserProvider>
                 <BrowserRouter>
                     <Header />
@@ -42,6 +44,7 @@ function App() {
                     </Routes>
                 </BrowserRouter>
             </UserProvider>
+        </QueryClientProvider>
         </>
     );
 }

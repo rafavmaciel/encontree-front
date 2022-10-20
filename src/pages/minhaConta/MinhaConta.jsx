@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import ModalEditarImgs from "../../components/modalEditarImgs/ModalEditarImgs";
 import CardInformacoesUser from "../../components/cardInformaçõesUser/CardInformacoesUser";
+import TabelaImoveis from "../../components/tabelaImvoveis/TabelaImoveis";
 
 export default function MinhaConta() {
     const [loading, setLoading] = useState(true);
@@ -22,7 +23,7 @@ export default function MinhaConta() {
             await axios
                 .get(process.env.REACT_APP_BASE_URL_LOCAL + "user/?email=" + state.user.email)
                 .then((response) => {
-                    if (response.data.length === 0 || response.data[0].id_usuario === undefined)   {
+                    if (response.data.length === 0 || response.data[0].id_usuario === undefined) {
                         navigate("/login");
                     }
                     id_usuario = response.data[0]?.id_usuario;
@@ -62,7 +63,7 @@ export default function MinhaConta() {
             await axios.delete(process.env.REACT_APP_BASE_URL_LOCAL + "imovel/?id_imovel=" + id_imovel);
             alert("Imóvel excluído com sucesso!");
             setAnuncios(anuncios.filter((anuncio) => anuncio.imovel_id_imovel !== id_imovel));
-            renderComponent()
+            renderComponent();
         } catch (error) {
             console.log(error);
         }
@@ -74,15 +75,14 @@ export default function MinhaConta() {
 
     async function handleChangeStatus(id_imovel) {
         try {
-            
             const anuncio = anuncios?.filter((anuncio) => anuncio.imovel_id_imovel === id_imovel);
-            const id_anuncio = anuncio[0]?.id_anuncio 
+            const id_anuncio = anuncio[0]?.id_anuncio;
             axios
                 .put(process.env.REACT_APP_BASE_URL_LOCAL + "anuncio-status/?id_anuncio=" + id_anuncio)
                 .then((response) => {
                     alert("Status alterado com sucesso!");
                 });
-                renderComponent()
+            renderComponent();
         } catch (error) {
             console.log(error);
         }
@@ -104,100 +104,42 @@ export default function MinhaConta() {
         <div className="py-5">
             <nav className="flex-col max-w-7xl mx-auto ">
                 {/* infromações do usuário */}
-                    <CardInformacoesUser user={state.user} logout={logout}  />
+                <CardInformacoesUser user={state.user} logout={logout} />
 
                 {/* lista de imoveis */}
                 {loading ? (
                     <div className="flex justify-center items-center">
-                        <div className="loader ease-linear rounded-full border-8 border-t-8 border-gray-200 h-12 w-12 mb-4"></div>
+                        <div className="loader ease-linear rounded-full border-8 border-t-8 border-gray-500 h-12 w-12 mb-4 my-10"></div>
                     </div>
                 ) : (
-                    <div className="flex justify-between items-center m-2">
+                    <>
                         <div className="flex flex-col">
-                            <p className="text-4xl text-black mb-5 ">Meus imvóveis </p>
-
-                            <button
-                                onClick={() => navigate("/cadastro-imovel/" + user.id_usuario)}
-                                className="bg-black max-w-sm hover:bg-stone-300 text-white font-bold py-2 px-4 my-3 rounded content-end"
-                            >
-                                Adicionar Imóvel
-                            </button>
-
-                            {imoveis?.map((imovel, i) => (
-                                <div key={i} className="flex items-center bg-[#fafafa] m-2 shadow-md">
-                                    <div 
-                                        className="flex items-center max-w-lg transition duration-500 hover:scale-105 hover:bg-blue-200"
-                                        id={i}
-                                        onClick={() => navigate("/editar-imovel/" + imovel.id_imovel)}
-                                    >
-                                        <img
-                                            className="w-300"
-                                            src={imovel.img_principal}
-                                            style={{ width: "100px" }}
-                                            alt="user"
-                                        />
-                                        <div className="ml-8 mr-8">
-                                            <p className="text-2xl text-blue-600">Rua do imovel:</p>
-                                            <p className="text-xl text-black ">{imovel.rua}</p>
-                                            <p className="text-l text-blue-600 mt-2">Cidade do imovel:</p>
-                                            <p className="text-l text-black mx-2">{imovel.cidade}</p>
-                                        </div>
-                                    </div>
-                                    {/* publicar anuncio */}
-                                    {/* verifica se já tem anuncio desse imóvel */}
-                                    {anuncios?.filter((anuncio) => anuncio.imovel_id_imovel === imovel.id_imovel)
-                                        .length === 0|| anuncios == undefined ? (
-                                        <button
-                                            className="bg-black hover:bg-stone-300 text-white font-bold py-2 px-4 mx-5 rounded"
-                                            onClick={() =>
-                                                navigate(`/cadastro-anuncio/${user.id_usuario}/${imovel.id_imovel}`)
-                                            }
-                                        >
-                                            Cadastrar anúncio
-                                        </button>
-                                    ) : (
-                                        <>
-                                        { anuncios?.filter((anuncio) => anuncio.imovel_id_imovel === imovel.id_imovel)[0].status === 1 ? (
-                                            <button
-                                                className="bg-red-400 hover:bg-stone-300 text-white font-bold py-2 px-4 mx-5 rounded"
-                                                onClick={() => {
-                                                    handleChangeStatus(imovel.id_imovel);
-                                                }}
-                                            >
-                                                Inativar anúncio
-                                            </button>
-                                        ) : (
-                                            <button
-                                                className="bg-green-400 hover:bg-stone-300 text-white font-bold py-2 px-4 mx-5 rounded"
-                                                onClick={() => {
-                                                    handleChangeStatus(imovel.id_imovel);
-                                                }}
-                                            >
-                                                Ativar anúncio
-                                            </button>
-                                        )}
-                                        </>
-                                    )}
-                                    {/* editar imagem principal */}
-                                    <i
-                                        className="fas fa-duotone fa-images mx-4 text-2xl text-black hover:text-blue-800 cursor-pointer"
-                                        onClick={() => {
-                                            setShowModal(true);
-                                            setSelectedImovel(imovel);
-                                        }}
-                                    />
-                                    {/* deletar imóvel */}
-                                    <i
-                                        className="fas fa-trash-alt text-2xl mx-4 text-black hover:text-blue-800 cursor-pointer"
-                                        onClick={() => handleDeleteImovel(imovel.id_imovel)}
-                                    />
-                                </div>
-                            ))}
+                            <p className="text-4xl text-gray-900 mb-3 mx-4 my-2">Meus imvóveis </p>
+                            <div className="flex flex-col-6 mx-4">
+                                <button
+                                    onClick={() => navigate("/cadastro-imovel/" + user.id_usuario)}
+                                    className="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 shadow-lg shadow-blue-500/50 dark:shadow-lg dark:shadow-blue-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
+                                >
+                                    Adicionar Imóvel
+                                </button>
+                            </div>
                         </div>
-                    </div>
+                        <TabelaImoveis
+                            imoveis={imoveis}
+                            user={user}
+                            anuncios={anuncios}
+                            handleDeleteImovel={handleDeleteImovel}
+                            changeModal={changeModal}
+                            setSelectedImovel={setSelectedImovel}
+                            handleChangeStatus={handleChangeStatus}
+                            setShowModal={setShowModal}
+                        />
+                    </>
                 )}
             </nav>
-            {showModal ? <ModalEditarImgs changeModal={changeModal} imovel={selectedImovel} renderComponent= {renderComponent} /> : null}
+            {showModal ? (
+                <ModalEditarImgs changeModal={changeModal} imovel={selectedImovel} renderComponent={renderComponent} />
+            ) : null}
         </div>
     );
 }

@@ -37,9 +37,9 @@ export default function LateralSearch(props) {
     }
 
     return (
-        <div className="w-60 max-h-300 bg-blue-500 rounded-lg border-4 border-blue-200 p-10 transition duration-500 hover:scale-105 ">
+        <div className="w-60 max-h-300 bg-gradient-to-r from-blue-700 via-blue-600 to-blue-500  focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 shadow-lg shadow-blue-500/50 dark:shadow-lg dark:shadow-blue-800/80 rounded-lg p-10 transition duration-500 hover:scale-105 ">
             <div color="blue" size="sm">
-                <h2 className="text-black text-2xl px-2 mb-4">Pesquisar</h2>
+                <h2 className="text-white text-3xl px-2 mb-4">Pesquisar</h2>
             </div>
             <div>
                 <div className="flex flex-col items-center">
@@ -124,14 +124,14 @@ export default function LateralSearch(props) {
             <div>
                 <button
                     type="button"
-                    className="text-white bg-gray-800 mt-3 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700"
+                    className=" bg-gradient-to-r text-white from-gray-900 via-gray-800 to-gray-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-gray-200 dark:focus:ring-gray-300 shadow-lg shadow-gray-100/50 dark:shadow-lg dark:shadow-gray-800/80 rounded-lg px-5 py-2.5 my-3"
                     onClick={handleClick}
                 >
                     Pesquisar
                 </button>
                 {/* limpar pesquisa */}
                 <button
-                    className="bg-neutral-100 hover:bg-stone-300 text-black font-bold py-2 px-4 mt-3 rounded"
+                    className="bg-gradient-to-r text-gray-900 from-gray-100 via-gray-200 to-gray-300 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-gray-800 dark:focus:ring-gray-300 shadow-lg shadow-gray-100/50 dark:shadow-lg py-2 px-4 mt-2 rounded"
                     onClick={handleLimparPesquisa}
                 >
                     Limpar

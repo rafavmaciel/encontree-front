@@ -2,10 +2,10 @@
 
 export default function GridPrincipal(props) {
     return (
-        <div className=" mt-8 ml-3   rounded-lg transition duration-500 hover:scale-105 hover:bg-blue-100 hover:focus:border-blue-500">
+        <div className="mt-8 ml-3  break-words rounded-lg transition duration-500 hover:scale-105 hover:bg-blue-100 hover:focus:border-blue-500">
             <div className="bg-blue-600 border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700 ">
                 <a href="#" className="" >
-                    <img className=" w-full h-70      " src={props.img} alt="" />
+                    <img className=" object-cover w-full h-45 " src={props.img} alt="" />
                 </a>
             </div>
             <div className="p-3">
