@@ -32,7 +32,7 @@ export default function ModalEditarImgs(props) {
             //deleta a imagem do banco de dados
             imovel.url_imagens.imagens = imovel.url_imagens.imagens.filter((item) => item !== img); 
             let data = {
-                url_imagens: imovel.url_imagens.imagens,
+                url_imagens:{"imagens":[imovel.url_imagens.imagens]} 
             };
             console.log(data);
             await axios.put(process.env.REACT_APP_BASE_URL_LOCAL + "imovel?id_imovel=" + imovel.id_imovel, data, {

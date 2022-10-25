@@ -29,8 +29,8 @@ export default function Home() {
     //formata o tamanho do texto do anuncio
     function descriptionLength(description) {
         if (description) {
-            if (description.length > 100) {
-                return description.substring(0, 100) + "...";
+            if (description.length > 70) {
+                return description.substring(0, 70) + "...";
             } else {
                 return description;
             }
@@ -39,8 +39,8 @@ export default function Home() {
 
     function tituloLength(titulo) {
         if (titulo) {
-            if (titulo.length > 60) {
-                return titulo.substring(0, 60) + "...";
+            if (titulo.length > 30) {
+                return titulo.substring(0, 30) + "...";
             } else {
                 return titulo;
             }

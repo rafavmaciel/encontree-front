@@ -47,7 +47,7 @@ export default function TabelaImoveis(props) {
         return (
             <>
                 <i
-                    className="fas fa-images mx-4 text-2xl text-black hover:scale-110 transition duration-500 cursor-pointer hover:translate-x-2 "
+                    className="fas fa-images mx-4 text-2xl text-gray-100 hover:scale-110 transition duration-500 cursor-pointer hover:translate-x-2 "
                     onClick={() => {
                         props.setShowModal(true);
                         props.setSelectedImovel(imovel);
@@ -102,9 +102,9 @@ export default function TabelaImoveis(props) {
                         </thead>
                         <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
                             {props.imoveis?.map((imovel, i) => (
-                                <tr class="bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-900 text-gray-700 dark:text-gray-400">
+                                <tr class=" first-letter:capitalize bg-gray-800 dark:bg-gray-800 hover:bg-gray-700 dark:hover:bg-gray-900 text-gray-100 dark:text-gray-400 " >
                                     {console.log(imovel)}
-                                    <td class="px-4 py-3">
+                                    <td class="px-4 py-3" onClick={ ()=>{ navigate("/editar-imovel/"+imovel.id_imovel)}}>
                                         <div class="flex items-center text-sm">
                                             <div class="relative hidden w-14 h-14 mr-3  md:block">
                                                 <img
@@ -119,8 +119,8 @@ export default function TabelaImoveis(props) {
                                                 ></div>
                                             </div>
                                             <div>
-                                                <p class="font-semibold">{imovel.cidade}</p>
-                                                <p class="text-xs text-gray-600 dark:text-gray-400">{imovel.rua}</p>
+                                                <p class="first-letter:capitalize font-semibold text-base" >{imovel.cidade}</p>
+                                                <p class="first-letter:capitalize text-xs text-gray-100 dark:text-gray-400">{imovel.rua}</p>
                                             </div>
                                         </div>
                                     </td>
