@@ -70,6 +70,10 @@ export default function ModalDetalhesAnuncio(props) {
                                 <p className="text-l font-bold text-blue-700"> Restrição de gênenro: </p>
                                 <p className="text-l font-bold ml-2 capitalize">{props.anuncio.restricao_sexo}</p>
                             </div>
+                            <div className="flex flex-row ">
+                                <p className="text-xl font-bold text-blue-700">Valor:</p>
+                                <p className="text-xl font-bold ml-2">R$ {props.anuncio.valor_aluguel}</p>
+                            </div>
                         </div>
                     </div>
                     <div className="flex flex-col items-start justify-start">
