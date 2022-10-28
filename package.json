@@ -13,6 +13,7 @@
     "firebase": "^9.10.0",
     "pure-react-carousel": "^1.29.0",
     "react": "^18.2.0",
+    "react-anagram-animation": "^1.2.0",
     "react-carousel-minimal": "^1.4.1",
     "react-dom": "^18.2.0",
     "react-paginate": "^8.1.3",
