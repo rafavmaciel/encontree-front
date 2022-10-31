@@ -57,7 +57,6 @@ export default function Home() {
                 restricao_sexo: filtros.restricaoSexo,
                 aceita_animal: filtros.restricaoAnimal,
             };
-            console.log(parametros);
             axios
                 .post(
                     process.env.REACT_APP_BASE_URL_LOCAL + "anuncio-busca-personalizada",
@@ -69,7 +68,6 @@ export default function Home() {
                     }
                 )
                 .then((response) => {
-                    console.log(response);
                     setAnuncios(response.data);
                 });
         } catch (err) {

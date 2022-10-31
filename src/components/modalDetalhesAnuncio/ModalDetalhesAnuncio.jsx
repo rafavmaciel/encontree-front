@@ -21,7 +21,7 @@ export default function ModalDetalhesAnuncio(props) {
                         <div className="ml-4">
                         <CarrouselImagens 
                             tratarImagem={tratarImagem}
-                            imgs={props.anuncio.url_imagens.imagens}
+                            imgs={props.anuncio.url_imagens.imagens.split(",")} //split para transformar a string em array
                             img_principal={props.anuncio.img_principal}
                         />
                         </div>

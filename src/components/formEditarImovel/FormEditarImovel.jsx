@@ -12,7 +12,6 @@ export default function FormEditarImovel(props) {
     function getImovel() {
         axios.get(process.env.REACT_APP_BASE_URL_LOCAL +"imovel/?id_imovel="+ id_imovel).then((response) => {
             setImovel(response.data[0]);
-            console.log(response.data[0]);
         }).catch((err) => {
             console.log(err);
             alert("Erro ao carregar imóvel");

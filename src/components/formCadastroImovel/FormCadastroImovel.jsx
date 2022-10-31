@@ -62,7 +62,7 @@ export default function FormCadastroImovel() {
                 garagem_vaga: e.target.vagaGaragem.value == "0" ? false : true,
                 tipo_imovel: e.target.tipoImovel.value,
                 numero: e.target.numeroCasa.value,
-                url_imagens: { imagens: urlsImagens },
+                url_imagens: { imagens: urlsImagens.join() },
                 img_principal: urlsImagens[0],
                 usuario_id_usuario: id_usuario,
             };

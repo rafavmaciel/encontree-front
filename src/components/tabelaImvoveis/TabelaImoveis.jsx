@@ -103,7 +103,7 @@ export default function TabelaImoveis(props) {
                         <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
                             {props.imoveis?.map((imovel, i) => (
                                 <tr class=" first-letter:capitalize bg-gray-800 dark:bg-gray-800 hover:bg-gray-700 dark:hover:bg-gray-900 text-gray-100 dark:text-gray-400 " >
-                                    {console.log(imovel)}
+                                    
                                     <td class="px-4 py-3" onClick={ ()=>{ navigate("/editar-imovel/"+imovel.id_imovel)}}>
                                         <div class="flex items-center text-sm">
                                             <div class="relative hidden w-14 h-14 mr-3  md:block">

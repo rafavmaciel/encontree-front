@@ -13,7 +13,6 @@ export default function LateralSearch(props) {
     });
 
     function handleClick() {
-        console.log(filtros);
         dispatch({ type: "SET_FILTROS_PESQUISA", payload: filtros });
     }
 

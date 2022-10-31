@@ -5,7 +5,6 @@ import { useState, useEffect, useContext } from "react";
 import UserContext from "../../redux/UserReducer";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import Anagram from 'react-anagram-animation';
 
 function Header() {
     const navigate = useNavigate();
