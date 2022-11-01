@@ -23,7 +23,6 @@ export default function Home() {
     function abrirModal(anuncio) {
         setModalStatus(true);
         setAnuncioModal(anuncio);
-        //console.log(anuncioModal);
     }
 
     //formata o tamanho do texto do anuncio
@@ -94,16 +93,15 @@ export default function Home() {
             <div className="p-10 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-5">
                 {anuncios.slice(pagesVisited, pagesVisited + usersPerPage).map((anuncio) => {
                     return anuncio.status ? (
-                        <a onClick={() => abrirModal(anuncio)}  >
+                        <div onClick={() => abrirModal(anuncio)} key={anuncio.id? anuncio.id: Math.random(8)} >
                             <GridPrincipal
-                                key={anuncio.id}
                                 id={anuncio.id}
                                 img={anuncio.img_principal}
                                 title={tituloLength(anuncio.titulo)}
                                 description={descriptionLength(anuncio.descricao_anuncio)}
                                 local={anuncio.estado + " - " + anuncio.cidade}
                             />
-                        </a>
+                        </div>
                     ) : null;
                 })}
             </div>

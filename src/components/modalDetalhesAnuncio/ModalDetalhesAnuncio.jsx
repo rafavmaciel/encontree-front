@@ -19,56 +19,57 @@ export default function ModalDetalhesAnuncio(props) {
                     </div>
                     <div className="flex flex-row items-start justify-start bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 pt-3 rounded-xl">
                         <div className="ml-4">
-                        <CarrouselImagens 
-                            tratarImagem={tratarImagem}
-                            imgs={props.anuncio.url_imagens.imagens.split(",")} //split para transformar a string em array
-                            img_principal={props.anuncio.img_principal}
-                        />
+                            <CarrouselImagens
+                                tratarImagem={tratarImagem}
+                                imgs={props.anuncio.url_imagens.imagens.split(",")} //split para transformar a string em array
+                                img_principal={props.anuncio.img_principal}
+                            />
                         </div>
-                        <div className="px-3 sm: hidden md:hidden lg:block " >
-                            
+                        <div className="px-3 sm: hidden md:hidden lg:block ">
                             <div className="flex flex-row ">
                                 <p className="text-l font-bold text-gray-100  capitalize">Localização:</p>
                             </div>
-                                <p className="text-l  text-gray-300 ">{props.anuncio.cidade + "-" + props.anuncio.estado}</p>
+                            <p className="text-l  text-gray-300 ">
+                                {props.anuncio.cidade + "-" + props.anuncio.estado}
+                            </p>
                             <div className="flex flex-row  ">
                                 <p className="text-l font-bold text-gray-100 capitalize">Bairro:</p>
                             </div>
-                                <p className="text-l capitalize  text-gray-300">{props.anuncio.bairro}</p>
+                            <p className="text-l capitalize  text-gray-300">{props.anuncio.bairro}</p>
                             <div className="flex flex-row ">
                                 <p className="text-l font-bold text-gray-100">Número:</p>
                             </div>
-                                <p className="text-l   text-gray-300" >{props.anuncio.numero}</p>
+                            <p className="text-l   text-gray-300">{props.anuncio.numero}</p>
                             <div className="flex flex-row ">
                                 <p className="text-l font-bold text-gray-100">Cep:</p>
                             </div>
-                                <p className="text-l   text-gray-300">{props.anuncio.cep}</p>
+                            <p className="text-l   text-gray-300">{props.anuncio.cep}</p>
                             <div className="flex flex-row ">
                                 <p className="text-l font-bold text-gray-100 capitalize">Tipo do imóvel:</p>
                             </div>
-                                <p className="text-l capitalize  text-gray-300">{props.anuncio.tipo_imovel}</p>
+                            <p className="text-l capitalize  text-gray-300">{props.anuncio.tipo_imovel}</p>
                         </div>
                         <div className="flex flex-col mx-3 sm:hidden md:hidden lg:block ">
                             <div className="flex flex-row ">
                                 <p className="text-l font-bold text-gray-100 ">Possui garagem:</p>
                             </div>
-                                <p className="text-l  text-gray-300">{props.anuncio.garagem_vaga ? "Sim" : "Não"}</p>
+                            <p className="text-l  text-gray-300">{props.anuncio.garagem_vaga ? "Sim" : "Não"}</p>
                             <div className="flex flex-row ">
                                 <p className="text-l font-bold text-gray-100">Banheiro(s):</p>
                             </div>
-                                <p className="text-l  text-gray-300">{props.anuncio.quantidade_banheiros}</p>
+                            <p className="text-l  text-gray-300">{props.anuncio.quantidade_banheiros}</p>
                             <div className="flex flex-row ">
                                 <p className="text-l font-bold text-gray-100">Quarto(s):</p>
                             </div>
-                                <p className="text-l text-gray-300 ">{props.anuncio.quantidade_quartos}</p>
+                            <p className="text-l text-gray-300 ">{props.anuncio.quantidade_quartos}</p>
                             <div className="flex flex-row ">
                                 <p className="text-l font-bold text-gray-100">Acetia animais ?:</p>
                             </div>
-                                <p className="text-l capitalize  text-gray-300">{props.anuncio.aceita_animal}</p>
+                            <p className="text-l capitalize  text-gray-300">{props.anuncio.aceita_animal}</p>
                             <div className="flex flex-row ">
                                 <p className="text-l font-bold text-gray-100"> Restrição de gênenro: </p>
                             </div>
-                                <p className="text-l   text-gray-300 capitalize">{props.anuncio.restricao_sexo}</p>
+                            <p className="text-l   text-gray-300 capitalize">{props.anuncio.restricao_sexo}</p>
                         </div>
                     </div>
                     <div className="flex flex-col items-start justify-start mt-3">

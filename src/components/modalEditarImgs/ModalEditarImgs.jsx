@@ -60,16 +60,16 @@ export default function ModalEditarImgs(props) {
                     <div className="flex flex-row items-center justify-center">
                         {props.imovel.url_imagens.imagens.split(",").map((img, i) => (
                             <>
-                                <div className="mx-2 my-2   hover:scale-105 hover:bg-blue-500 hover:border-2 hover:border-blue-500 rounded-xl">
-                                    <a
+                                <div key={"div"+i} className="mx-2 my-2   hover:scale-105 hover:bg-blue-500 hover:border-2 hover:border-blue-500 rounded-xl">
+                                    <a key={"delete"+i}
                                         onClick={() => handleDelete(img, props.imovel)}
                                         className="flex flex-col transition duration-500 rounded-xl  items-center my-2 hover:scale-105"
                                     >
                                         <i className="fas fa-trash-alt text-red-500 "></i>
                                     </a>
-                                    <a key={i} onClick={() => handleClick(img, props.imovel)}>
+                                    <a key={"click"+i} onClick={() => handleClick(img, props.imovel)}>
                                         <img
-                                            key={i}
+                                            key={"img"+i}
                                             src={img}
                                             style={{ width: "150px", height: "110px" }}
                                             alt="img-blur-shadow"

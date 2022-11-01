@@ -3,8 +3,8 @@ import { Carousel } from 'react-responsive-carousel';
 export default function CarrouselImagens(props) {
     return (
         <Carousel width={500}   showThumbs={false} >
-            {props.imgs.map((img) => (
-                <div>
+            {props.imgs.map((img,i) => (
+                <div key={i}>
                     <img src={img} style={{ height: "385px" }} />
                 </div>
             ))}

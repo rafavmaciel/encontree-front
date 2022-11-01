@@ -12,9 +12,9 @@ export default function GridPrincipal(props) {
                         />
                     </a>
                 </div>
-                <div className="p-3" style={{ height: "200px" }}>
-                    <h5 className="mb-3 text-2xl font-bold first-letter:capitalize ">{props.title}</h5>
-                    <p className="mb-3 font-normal first-letter:capitalize">{props.description}</p>
+                <div className="p-2" style={{ height: "200px" }}>
+                    <h5 className="mb-3 text-xl font-bold first-letter:capitalize uppercase ">{props.title}</h5>
+                    <p className="mb-3 font-normal first-letter:capitalize lowercase">{props.description}</p>
                     <i className="fas fa-map-marker-alt fa-l mt-[3px] ">
                         <span className="font-normal capitalize">&nbsp;{props.local}</span>
                     </i>
