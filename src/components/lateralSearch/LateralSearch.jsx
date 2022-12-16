@@ -13,7 +13,6 @@ export default function LateralSearch(props) {
     });
 
     function handleClick() {
-        console.log(filtros);
         dispatch({ type: "SET_FILTROS_PESQUISA", payload: filtros });
     }
 
@@ -53,7 +52,7 @@ export default function LateralSearch(props) {
                             onChange={(e) => setFiltros({ ...filtros, estado: e.target.value })}
                             placeholder="Estado"
                         >
-                            <option value={null} disabled="disabled" selected="true">
+                            <option value={null} disabled="disabled" defaultValue="true">
                                 Selecione
                             </option>
                             {estadosBrasileiros.map((estado) => (
@@ -94,7 +93,7 @@ export default function LateralSearch(props) {
                             onChange={(e) => setFiltros({ ...filtros, restricaoSexo: e.target.value })}
                             id="restricaoSexo"
                         >
-                            <option value={null} disabled="disabled" selected="true">
+                            <option value={null} disabled="disabled" defaultValue="true">
                                 Selecione
                             </option>
                             <option value="nao-possui">Não</option>
@@ -111,7 +110,7 @@ export default function LateralSearch(props) {
                             onChange={(e) => setFiltros({ ...filtros, restricaoAnimal: e.target.value })}
                             id="restricaoAnimal"
                         >
-                            <option value={null} disabled="disabled" selected="true">
+                            <option value={null} disabled="disabled" defaultValue="true">
                                 Selecione
                             </option>
                             <option value="nao-">Não</option>

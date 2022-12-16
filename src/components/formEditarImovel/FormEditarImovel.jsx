@@ -12,7 +12,6 @@ export default function FormEditarImovel(props) {
     function getImovel() {
         axios.get(process.env.REACT_APP_BASE_URL_LOCAL +"imovel/?id_imovel="+ id_imovel).then((response) => {
             setImovel(response.data[0]);
-            console.log(response.data[0]);
         }).catch((err) => {
             console.log(err);
             alert("Erro ao carregar imóvel");
@@ -58,7 +57,7 @@ export default function FormEditarImovel(props) {
         <form onSubmit={handleSubmit} id="formCadastroPet">
         <div className="grid gap-6 mb-6 lg:grid-cols-2">
             <div>
-                <label for="rua" className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                <label htmlFor="rua" className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
                     Rua
                 </label>
                 <input
@@ -67,45 +66,45 @@ export default function FormEditarImovel(props) {
                     className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     placeholder="Joly"
                     required
-                    value={imovel.rua}
+                    value={imovel.rua?imovel.rua:""}
                     onChange={(e) => setImovel({ ...imovel, rua: e.target.value })}
                 />
             </div>
             <div>
-                <label for="bairro" className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                <label htmlFor="bairro" className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
                     Bairro
                 </label>
                 <input
                     id="bairro"
                     className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     placeholder="Centro"
-                    value={imovel.bairro}
+                    value={imovel.bairro? imovel.bairro:''}
                     onChange={(e) => setImovel({ ...imovel, bairro: e.target.value })}
                     required
                 />
             </div>
             <div>
-                <label for="cidade" className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                <label htmlFor="cidade" className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
                     Cidade
                 </label>
                 <input
                     id="cidade"
                     className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     placeholder="Garanhuns"
-                    value={imovel.cidade}
+                    value={imovel.cidade?imovel.cidade:''}
                     onChange={(e) => setImovel({ ...imovel, cidade: e.target.value })}
                     required
                 />
             </div>
             <div>
-                <label for="estado" className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                <label htmlFor="estado" className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
                     Estado
                 </label>
                 <select
                     id="estado"
                     className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     placeholder="flowbite.com"
-                    value={imovel.estado}
+                    value={imovel.estado?imovel.estado:''}
                     onChange={(e) => setImovel({ ...imovel, estado: e.target.value })}
                     required
                 >
@@ -117,7 +116,7 @@ export default function FormEditarImovel(props) {
                 </select>
             </div>
             <div>
-                <label for="cep" className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                <label htmlFor="cep" className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
                     Cep
                 </label>
                 <input
@@ -126,14 +125,14 @@ export default function FormEditarImovel(props) {
                     className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     placeholder="55120000"
                     pattern="[0-9]{8}"
-                    value={imovel.cep}
+                    value={imovel.cep?imovel.cep:''}
                     onChange={(e) => setImovel({ ...imovel, cep: e.target.value })}
                     required
                 />
             </div>
             <div>
                 <label
-                    for="pontoReferencia"
+                    htmlFor="pontoReferencia"
                     className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
                 >
                     Ponto de referência
@@ -143,13 +142,13 @@ export default function FormEditarImovel(props) {
                     id="pontoReferencia"
                     className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     placeholder="próximo ao mercado"
-                    value={imovel.ponto_referencia}
+                    value={imovel.ponto_referencia?imovel.ponto_referencia:''}
                     onChange={(e) => setImovel({ ...imovel, ponto_referencia: e.target.value })}
                 />
             </div>
             <div>
                 <label
-                    for="quantidadeQuartos"
+                    htmlFor="quantidadeQuartos"
                     className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
                 >
                     Quantidade de quartos
@@ -159,14 +158,14 @@ export default function FormEditarImovel(props) {
                     id="quantidadeQuartos"
                     className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     placeholder="1"
-                    value={imovel.quantidade_quartos}
+                    value={imovel.quantidade_quartos?imovel.quantidade_quartos:''}
                     onChange={(e) => setImovel({ ...imovel, quantidade_quartos: e.target.value })}
                     required
                 />
             </div>
             <div>
                 <label
-                    for="quantidadeBanheiros"
+                    htmlFor="quantidadeBanheiros"
                     className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
                 >
                     Quantidade de banheiros
@@ -176,14 +175,14 @@ export default function FormEditarImovel(props) {
                     id="quantidadeBanheiros"
                     className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     placeholder="1"
-                    value={imovel.quantidade_banheiros}
+                    value={imovel.quantidade_banheiros?imovel.quantidade_banheiros:''}
                     onChange={(e) => setImovel({ ...imovel, quantidade_banheiros: e.target.value })}
                     required
                 />
             </div>
             <div>
                 <label
-                    for="vagaGaragem"
+                    htmlFor="vagaGaragem"
                     className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
                 >
                     Há garagem?
@@ -191,7 +190,7 @@ export default function FormEditarImovel(props) {
                 <select
                     id="vagaGaragem"
                     className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                    value={imovel.garagem_vaga}
+                    value={imovel.garagem_vaga?imovel.garagem_vaga:''}
                     onChange={(e) => setImovel({ ...imovel, garagem_vaga: e.target.value })}
                 >
                     <option value={0}>Sim</option>
@@ -199,13 +198,13 @@ export default function FormEditarImovel(props) {
                 </select>
             </div>
             <div>
-                <label for="tipoImovel" className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                <label htmlFor="tipoImovel" className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
                     Tipo de imóvel
                 </label>
                 <select
                     id="tipoImovel"
                     className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                    value={imovel.tipo_imovel}
+                    value={imovel.tipo_imovel?imovel.tipo_imovel:''}
                     onChange={(e) => setImovel({ ...imovel, tipo_imovel: e.target.value })}
                 >
                     <option>Casa</option>
@@ -216,7 +215,7 @@ export default function FormEditarImovel(props) {
                 </select>
             </div>
             <div>
-                <label for="numeroCasa" className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                <label htmlFor="numeroCasa" className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
                     Número da casa
                 </label>
                 <input
@@ -224,13 +223,13 @@ export default function FormEditarImovel(props) {
                     id="numeroCasa"
                     className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     placeholder="1"
-                    value={imovel.numero}
+                    value={imovel.numero?imovel.numero:''}
                     onChange={(e) => setImovel({ ...imovel, numero: e.target.value })}
                     required
                 />
             </div>
             {/* <div>
-                <label for="fotos" className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                <label htmlFor="fotos" className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
                     Fotos
                 </label>
                 <input

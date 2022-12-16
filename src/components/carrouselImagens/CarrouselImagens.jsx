@@ -2,10 +2,10 @@ import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a lo
 import { Carousel } from 'react-responsive-carousel';
 export default function CarrouselImagens(props) {
     return (
-        <Carousel width={500}  showThumbs={false} >
-            {props.imgs.map((img) => (
-                <div>
-                    <img src={img} />
+        <Carousel width={500}   showThumbs={false} >
+            {props.imgs.map((img,i) => (
+                <div key={i}>
+                    <img src={img} style={{ height: "385px" }} />
                 </div>
             ))}
         </Carousel>

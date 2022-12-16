@@ -23,14 +23,13 @@ export default function Home() {
     function abrirModal(anuncio) {
         setModalStatus(true);
         setAnuncioModal(anuncio);
-        //console.log(anuncioModal);
     }
 
     //formata o tamanho do texto do anuncio
     function descriptionLength(description) {
         if (description) {
-            if (description.length > 100) {
-                return description.substring(0, 100) + "...";
+            if (description.length > 70) {
+                return description.substring(0, 70) + "...";
             } else {
                 return description;
             }
@@ -39,8 +38,8 @@ export default function Home() {
 
     function tituloLength(titulo) {
         if (titulo) {
-            if (titulo.length > 60) {
-                return titulo.substring(0, 60) + "...";
+            if (titulo.length > 30) {
+                return titulo.substring(0, 30) + "...";
             } else {
                 return titulo;
             }
@@ -57,7 +56,6 @@ export default function Home() {
                 restricao_sexo: filtros.restricaoSexo,
                 aceita_animal: filtros.restricaoAnimal,
             };
-            console.log(parametros);
             axios
                 .post(
                     process.env.REACT_APP_BASE_URL_LOCAL + "anuncio-busca-personalizada",
@@ -69,7 +67,6 @@ export default function Home() {
                     }
                 )
                 .then((response) => {
-                    console.log(response);
                     setAnuncios(response.data);
                 });
         } catch (err) {
@@ -96,16 +93,15 @@ export default function Home() {
             <div className="p-10 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-5">
                 {anuncios.slice(pagesVisited, pagesVisited + usersPerPage).map((anuncio) => {
                     return anuncio.status ? (
-                        <a onClick={() => abrirModal(anuncio)}  >
+                        <div onClick={() => abrirModal(anuncio)} key={anuncio.id? anuncio.id: Math.random(8)} >
                             <GridPrincipal
-                                key={anuncio.id}
                                 id={anuncio.id}
                                 img={anuncio.img_principal}
                                 title={tituloLength(anuncio.titulo)}
                                 description={descriptionLength(anuncio.descricao_anuncio)}
                                 local={anuncio.estado + " - " + anuncio.cidade}
                             />
-                        </a>
+                        </div>
                     ) : null;
                 })}
             </div>

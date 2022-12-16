@@ -43,7 +43,7 @@ export default function FormCadastroUsuario() {
         <form onSubmit={handleSubmit} id="formCadastroPet">
             <div className="grid gap-6 mb-6 lg:grid-cols-2">
                 <div>
-                    <label for="nomeUser" className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                    <label htmlFor="nomeUser" className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
                         Nome do Usuario
                     </label>
                     <input
@@ -55,7 +55,7 @@ export default function FormCadastroUsuario() {
                     />
                 </div>
                 <div>
-                    <label for="email" className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                    <label htmlFor="email" className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
                         Email
                     </label>
                     <input
@@ -68,7 +68,7 @@ export default function FormCadastroUsuario() {
                     />
                 </div>
                 <div>
-                    <label for="cpfUser" className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                    <label htmlFor="cpfUser" className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
                         CPF
                     </label>
                     <input
@@ -79,7 +79,7 @@ export default function FormCadastroUsuario() {
                     />
                 </div>
                 <div>
-                    <label for="telUser" className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                    <label htmlFor="telUser" className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
                         Telefone para contato
                     </label>
                     <input
@@ -92,7 +92,7 @@ export default function FormCadastroUsuario() {
                     />
                 </div>
                 <div>
-                    <label for="estadoUser" className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                    <label htmlFor="estadoUser" className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
                         Idade
                     </label>
                     <input
@@ -104,7 +104,7 @@ export default function FormCadastroUsuario() {
                     />
                 </div>
                 <div>
-                    <label for="sexoUser" className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                    <label htmlFor="sexoUser" className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
                         Sexo
                     </label>
                     <select

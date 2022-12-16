@@ -50,7 +50,7 @@ export default function FormCadastroAnuncio() {
                 <div className="grid gap-6 mb-6 lg:grid-cols-2">
                     <div>
                         <label
-                            for="tituloAnuncio"
+                            htmlFor="tituloAnuncio"
                             className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
                         >
                             Título do anúncio
@@ -65,7 +65,7 @@ export default function FormCadastroAnuncio() {
                     </div>
                     <div>
                         <label
-                            for="aceitaAnimal"
+                            htmlFor="aceitaAnimal"
                             className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
                         >
                             Aceita animais?
@@ -82,7 +82,7 @@ export default function FormCadastroAnuncio() {
                     </div>
                     <div>
                         <label
-                            for="restricaoSexo"
+                            htmlFor="restricaoSexo"
                             className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
                         >
                             Possui restrição de gênero?
@@ -100,7 +100,7 @@ export default function FormCadastroAnuncio() {
                     </div>
                     <div>
                         <label
-                            for="restricaoFumante"
+                            htmlFor="restricaoFumante"
                             className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
                         >
                             Possui restrição de fumantes?
@@ -117,7 +117,7 @@ export default function FormCadastroAnuncio() {
                     </div>
                     <div>
                         <label
-                            for="valorAluguel"
+                            htmlFor="valorAluguel"
                             className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
                         >
                             Valor do aluguel
@@ -133,7 +133,7 @@ export default function FormCadastroAnuncio() {
                 </div>
                 <div>
                     <label
-                        for="descricaoAnuncio"
+                        htmlFor="descricaoAnuncio"
                         className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
                     >
                         Descrição do anúncio

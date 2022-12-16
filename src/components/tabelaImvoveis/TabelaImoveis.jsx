@@ -47,7 +47,7 @@ export default function TabelaImoveis(props) {
         return (
             <>
                 <i
-                    className="fas fa-images mx-4 text-2xl text-black hover:scale-110 transition duration-500 cursor-pointer hover:translate-x-2 "
+                    className="fas fa-images mx-4 text-2xl text-gray-100 hover:scale-110 transition duration-500 cursor-pointer hover:translate-x-2 "
                     onClick={() => {
                         props.setShowModal(true);
                         props.setSelectedImovel(imovel);
@@ -59,23 +59,23 @@ export default function TabelaImoveis(props) {
 
     function comPaginacao(){
         return(
-            <div class="grid px-4 py-3 text-xs font-semibold tracking-wide text-gray-500 uppercase border-t dark:border-gray-700 bg-gray-50 sm:grid-cols-9 dark:text-gray-400 dark:bg-gray-800">
-                    <span class="flex items-center col-span-3"> Showing 21-30 of 100 </span>
-                    <span class="col-span-2"></span>
+            <div className="grid px-4 py-3 text-xs font-semibold tracking-wide text-gray-500 uppercase border-t dark:border-gray-700 bg-gray-50 sm:grid-cols-9 dark:text-gray-400 dark:bg-gray-800">
+                    <span className="flex items-center col-span-3"> Showing 21-30 of 100 </span>
+                    <span className="col-span-2"></span>
                     {/* /* <!-- Pagination --> */}
-                    <span class="flex col-span-4 mt-2 sm:mt-auto sm:justify-end">
+                    <span className="flex col-span-4 mt-2 sm:mt-auto sm:justify-end">
                         <nav aria-label="Table navigation">
-                            <ul class="inline-flex items-center">
+                            <ul className="inline-flex items-center">
                                 <li>
                                     <button
-                                        class="px-3 py-1 rounded-md rounded-l-lg focus:outline-none focus:shadow-outline-purple"
+                                        className="px-3 py-1 rounded-md rounded-l-lg focus:outline-none focus:shadow-outline-purple"
                                         aria-label="Previous"
                                     >
-                                        <svg aria-hidden="true" class="w-4 h-4 fill-current" viewBox="0 0 20 20">
+                                        <svg aria-hidden="true" className="w-4 h-4 fill-current" viewBox="0 0 20 20">
                                             <path
                                                 d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
-                                                clip-rule="evenodd"
-                                                fill-rule="evenodd"
+                                                clipRule="evenodd"
+                                                fillRule="evenodd"
                                             ></path>
                                         </svg>
                                     </button>
@@ -88,47 +88,47 @@ export default function TabelaImoveis(props) {
     }
 
     return (
-        <div class="mt-4 mx-4">
-            <div class="w-full overflow-hidden rounded-lg shadow-xs">
-                <div class="w-full overflow-x-auto">
-                    <table class="w-full">
+        <div className="mt-4 mx-4">
+            <div className="w-full overflow-hidden rounded-lg shadow-xs">
+                <div className="w-full overflow-x-auto">
+                    <table className="w-full">
                         <thead>
-                            <tr class="text-xs font-semibold tracking-wide text-left text-gray-100 uppercase border-b dark:border-gray-700 bg-blue-700 dark:text-gray-400 dark:bg-gray-800">
-                                <th class="px-4 py-3">Imóvel</th>
-                                <th class="px-4 py-3">Cadastrar anuncio</th>
-                                <th class="px-4 py-3">Editar imagens</th>
-                                <th class="px-4 py-3">Deletar </th>
+                            <tr className="text-xs font-semibold tracking-wide text-left text-gray-100 uppercase border-b dark:border-gray-700 bg-blue-700 dark:text-gray-400 dark:bg-gray-800">
+                                <th className="px-4 py-3">Imóvel</th>
+                                <th className="px-4 py-3">Cadastrar anuncio</th>
+                                <th className="px-4 py-3">Editar imagens</th>
+                                <th className="px-4 py-3">Deletar </th>
                             </tr>
                         </thead>
-                        <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
+                        <tbody className="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
                             {props.imoveis?.map((imovel, i) => (
-                                <tr class="bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-900 text-gray-700 dark:text-gray-400">
-                                    {console.log(imovel)}
-                                    <td class="px-4 py-3">
-                                        <div class="flex items-center text-sm">
-                                            <div class="relative hidden w-14 h-14 mr-3  md:block">
+                                <tr key={i} className=" first-letter:capitalize bg-gray-800 dark:bg-gray-800 hover:bg-gray-700 dark:hover:bg-gray-900 text-gray-100 dark:text-gray-400 " >
+                                    
+                                    <td className="px-4 py-3" onClick={ ()=>{ navigate("/editar-imovel/"+imovel.id_imovel)}}>
+                                        <div className="flex items-center text-sm">
+                                            <div className="relative hidden w-14 h-14 mr-3  md:block">
                                                 <img
-                                                    class="object-cover w-full h-full "
+                                                    className="object-cover w-full h-full "
                                                     src={imovel.img_principal}
                                                     alt=""
                                                     loading="lazy"
                                                 />
                                                 <div
-                                                    class="absolute inset-0 rounded-full shadow-inner"
+                                                    className="absolute inset-0 rounded-full shadow-inner"
                                                     aria-hidden="true"
                                                 ></div>
                                             </div>
                                             <div>
-                                                <p class="font-semibold">{imovel.cidade}</p>
-                                                <p class="text-xs text-gray-600 dark:text-gray-400">{imovel.rua}</p>
+                                                <p className="first-letter:capitalize font-semibold text-base" >{imovel.cidade}</p>
+                                                <p className="first-letter:capitalize text-xs text-gray-100 dark:text-gray-400">{imovel.rua}</p>
                                             </div>
                                         </div>
                                     </td>
-                                    <td class="px-4 py-3 text-sm">{compAnuncios(props.anuncios, imovel)}</td>
-                                    <td class="px-4 py-3 text-xs">
+                                    <td className="px-4 py-3 text-sm">{compAnuncios(props.anuncios, imovel)}</td>
+                                    <td className="px-4 py-3 text-xs">
                                         {editarImagens(props.setShowModal, props.setSelectedImovel, imovel)}
                                     </td>
-                                    <td class="px-4 py-3 text-sm">
+                                    <td className="px-4 py-3 text-sm">
                                         {/* deletar imóvel */}
                                         <i
                                             className="fas fa-trash-alt text-2xl mx-4 hover:scale-110 transition duration-500 cursor-pointer hover:translate-x-2"
