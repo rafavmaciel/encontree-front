@@ -14,8 +14,12 @@ export default function ModalDetalhesAnuncio(props) {
             <div className="fixed inset-0 w-full h-full bg-black opacity-40" onClick={() => props.changeModal()}></div>
             <div className="flex items-center min-h-screen px-4 py-8">
                 <div className="relative w-2/3 p-10 mx-auto bg-white rounded-md shadow-lg">
-                    <div className="flex flex-col mb-4 items-between justify-between">
+                    <div className="flex flex-row justify-between mx-1">
                         <h2 className="text-2xl font-bold ">{props.anuncio.titulo}</h2>
+                        <div className="flex flex-row mx-3  ">
+                            <p className="text-xl font-bold text-blue-700">Valor:</p>
+                            <p className="text-xl font-bold ml-2">R$ {props.anuncio.valor_aluguel}</p>
+                        </div>
                     </div>
                     <div className="flex flex-row items-start justify-start bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 pt-3 rounded-xl">
                         <div className="ml-4">
@@ -52,10 +56,6 @@ export default function ModalDetalhesAnuncio(props) {
                         <div className="flex flex-col mx-3 sm:hidden md:hidden lg:block ">
                             <div className="flex flex-row ">
                                 <p className="text-l font-bold text-gray-100 ">Possui garagem:</p>
-                            </div>
-                            <div className="flex flex-row ">
-                                <p className="text-xl font-bold text-blue-700">Valor:</p>
-                                <p className="text-xl font-bold ml-2">R$ {props.anuncio.valor_aluguel}</p>
                             </div>
                             <p className="text-l  text-gray-300">{props.anuncio.garagem_vaga ? "Sim" : "Não"}</p>
                             <div className="flex flex-row ">

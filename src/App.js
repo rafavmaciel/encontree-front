@@ -29,7 +29,7 @@ function App() {
                 <BrowserRouter>
                     <Header />
                     <Routes>
-                        <Route path="/" element={<LandingPage />} />
+                        <Route path="/" element={<Home />} />
                         <Route path="/login" element={<Login />} />
                         <Route path="/menu" element={<Menu />} />
                         <Route path="/home" element={<Home />} />

@@ -5,6 +5,7 @@ import { useState, useEffect, useContext } from "react";
 import UserContext from "../../redux/UserReducer";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import logo from "../../assets/logo.png";
 
 function Header() {
     const navigate = useNavigate();
@@ -34,7 +35,7 @@ function Header() {
         <nav className="bg-white px-2 sm:px-4 py-1 dark:bg-gray-900 w-full z-20 top-0 left-0 border-b border-gray-200 hover:border-b-4 hover:border-blue-700 transition duration-500 dark:border-gray-600">
             <div className="container flex flex-wrap justify-between items-center mx-auto">
                 <Link to="/home" className="link-nostyle flex items-center">
-                    <i className="fas fa-home text-2xl text-blue-700 dark:text-blue-400 ml-3"></i>
+                    <img src={logo} alt="logo" className="w-14 h-14 hover:scale-110 transition duration-500"  />
                     <span className="self-center text-xl font-semibold whitespace-nowrap dark:text-white">
                         Encontree
                     </span>

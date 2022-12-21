@@ -6,6 +6,7 @@ import UserContext from "../../redux/UserReducer";
 import ReactPaginate from "react-paginate";
 import "./style.css";
 import ModalDetalhesAnuncio from "../../components/modalDetalhesAnuncio/ModalDetalhesAnuncio";
+import banner from "../../assets/banner-2.png";
 
 export default function Home() {
     const [anuncios, setAnuncios] = useState([]);
@@ -93,7 +94,7 @@ export default function Home() {
             <div className="p-10 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-5">
                 {anuncios.slice(pagesVisited, pagesVisited + usersPerPage).map((anuncio) => {
                     return anuncio.status ? (
-                        <div onClick={() => abrirModal(anuncio)} key={anuncio.id? anuncio.id: Math.random(8)} >
+                        <div onClick={() => abrirModal(anuncio)} key={anuncio.id ? anuncio.id : Math.random(8)}>
                             <GridPrincipal
                                 id={anuncio.id}
                                 img={anuncio.img_principal}
@@ -111,8 +112,12 @@ export default function Home() {
     return (
         <>
             <div className="mt-14">
+                <div className="justify-center flex m-3 ">
+                    <img src={banner} style={{ width: "100%" }}></img>
+                </div>
+
                 <div className="flex flex-row">
-                    <div className="flex flex-col-3 place-items-start mt-20 mx-4 ">
+                    <div className="place-items-start mt-20 mx-4 ">
                         <LateralSearch />
                     </div>
                     <div className="col-9">
